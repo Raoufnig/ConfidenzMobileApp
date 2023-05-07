@@ -34,8 +34,34 @@
     <ion-text>15000</ion-text>
 </div>
 <div class="button-container">
-  <button type="submit" class="button-custom " style="width: 100%;" >Modifier</button>
+  <button type="submit" class="button-custom " id="open-modal" style="width: 100%;" >Modifier</button>
 </div> 
     </div>
   </ion-card>
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Modifier les informations</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Changer la prime</ion-label>
+          <ion-input type="text" placeholder="Your name" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Changer la Dette</ion-label>
+          <ion-input type="text" placeholder="Your name"></ion-input>
+        </ion-item>
+        
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
