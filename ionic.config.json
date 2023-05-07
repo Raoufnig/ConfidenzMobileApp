@@ -1,0 +1,7 @@
+{
+  "name": "TheConfidenz",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

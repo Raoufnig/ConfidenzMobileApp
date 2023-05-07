@@ -1,0 +1,80 @@
+.container-image{
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+    object-fit: cover;
+    margin-top: 95px;
+}
+.container-image img{
+    width: 100%;
+    height: 100%;
+}
+
+ion-input{
+    border: 2px solid #d5e0ff;
+    background: #f3f5fd;
+    border-radius: 8px;
+    height: 20px;
+    --placeholder:mar
+}
+ion-input::placeholder{
+    margin: 0 8px;
+}
+.input:focus-within{
+   border: 3px solid #bac6fd;
+}
+
+.container-form{
+    padding: 30px;
+    margin-top: 60px;
+}
+.icon{
+    font-size: 27px;
+    padding-right: 10px;
+}
+.container-form > div:nth-child(2){
+    margin-top: 8px;
+}
+.container-submit{
+    margin-top: 80px;
+}
+
+.container-create{
+    margin-top: 40px;
+}
+
+.error-input{
+    border: 1px solid var(--ion-color-danger);
+}
+ion-toolbar, ion-content{
+    // --background: var(--ion-color-light)!important;
+    background-color: var(--ion-color-light);
+    // --border-width:0px!important;
+}
+.button-custom{
+    height: 48px;
+    border-radius: 5px;
+    background-color: var(--ion-color-primary-confidenz);
+    color:white
+}
+.button-container{
+    margin-top: 16px;
+}
+h1{
+    color: var(--ion-color-primary-confidenz);
+    font-weight: 600;
+    font-size: 22px;
+}
+span{
+    font-size: 15px;
+}
+ion-item{
+    width:100%;
+}
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+  
+  .ng-invalid.ng-touched + div {
+    color: red;
+  }

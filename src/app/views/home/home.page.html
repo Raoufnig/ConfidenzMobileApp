@@ -1,0 +1,86 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+  <ion-searchbar mode="ios" show-clear-button="always"></ion-searchbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div style="margin-bottom: 32px;">
+    <ion-card class="header">
+      <ion-img src="/assets/img/personneuploading.jpg" class="rounded"></ion-img><span>Bienvenue sur <br>Confidenz<br> <button class="button-view" style="margin-top: 8px;">View Notifications</button></span>
+    </ion-card>
+  </div>
+  <div>
+    <h3>Liste des Documents</h3>
+    <div class="display-sm">
+      <div class=" contener-list mt-25">
+         <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc"> 
+          <ion-item detail="true" lines="none">
+            <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
+              <div>
+                <ion-img src="assets/img/xls.png" class="img-doc"></ion-img>
+              </div>
+              <div class="pl-15" style="margin-left: 18px;" mode="ios">
+                <div>
+                <h3 ><ion-text>Document Finance Aboul Raouf</ion-text></h3>
+                <ion-badge> Read Only </ion-badge>
+                </div>
+              </div>
+            </div>
+          </ion-item>
+          
+        </ion-card>
+        <ion-card class="m-0 br-15" mode="ios"> 
+          <ion-item detail="true" lines="none">
+            <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
+              <div>
+                <ion-img src="assets/img/xls.png" class="img-doc"></ion-img>
+              </div>
+              <div class="pl-15" style="margin-left: 18px;">
+                <div>
+                <h3 ><ion-text>Aboul Raouf</ion-text></h3>
+                <ion-badge> Read Only </ion-badge>
+                </div>
+              </div>
+            </div>
+          </ion-item>
+          
+        </ion-card>
+        <ion-card class="m-0 br-15" mode="ios" (click)="toPage()"> 
+          <ion-item detail="true" lines="none">
+            <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
+              <div>
+                <ion-img src="assets/img/xls.png" class="img-doc"></ion-img>
+              </div>
+              <div class="pl-15" style="margin-left: 18px;">
+                <div>
+                <h3 ><ion-text>Aboul Raouf</ion-text></h3>
+                <ion-badge> Read Only </ion-badge>
+                </div>
+              </div>
+            </div>
+          </ion-item>
+          
+        </ion-card>
+        <ion-card class="m-0 br-15" mode="ios"> 
+          <ion-item detail="true" lines="none">
+            <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
+              <div>
+                <ion-img src="assets/img/xls.png" class="img-doc"></ion-img>
+              </div>
+              <div class="pl-15" style="margin-left: 18px;">
+                <div>
+                <h3 ><ion-text>Aboul Raouf</ion-text></h3>
+                <ion-badge> Read Only </ion-badge>
+                </div>
+              </div>
+            </div>
+          </ion-item>
+          
+        </ion-card>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

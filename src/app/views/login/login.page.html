@@ -1,0 +1,45 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content fullscreen="true">
+  <div style="display: flex; justify-content:center;">
+    <div class="container-image d-flex ion-justify-content-center " >
+      <ion-img src="assets/img/imgLogin.png"></ion-img>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <h1>Bienvenue Sur Confidenz APP</h1>
+    <span>Bien vouloir remplir le formulaire pour vous connecter</span>
+  </div>
+  <form class="container-form" style="margin-top: 8px;" [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
+    <div style="margin-bottom: 16px;">
+      <label> Email</label>
+      <ion-input class="input " aria-label="Custom input"  style="margin-top: 8px; padding: 10px" formControlName="email">
+      </ion-input>
+      <div class="mb-3"  *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+        <div *ngIf="loginForm.controls['email'].errors?.['required']">
+            Email is required.
+        </div>
+        <div *ngIf="loginForm.controls['email'].errors?.['email']">
+            Invalid email format.
+        </div>
+    </div>
+    </div>
+    <div class="mt-5">
+      <label> Password</label>
+      <ion-input class="input" placeholder="**************" required  formControlName="password">
+        <!-- [disabled]="!validationFormUser.valid" -->
+        <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
+      </ion-input>
+      <div class="mb-3" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+        <div *ngIf="loginForm.controls['password'].errors?.['required']">
+          Password is required.
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+      <button type="submit" class="button-custom " style="width: 100%;">Se Connecter</button>
+    </div> 
+  </form>
+</ion-content>

@@ -1,0 +1,27 @@
+ion-content{
+    --background:  var(--ion-color-confidenz-background);
+}
+
+h3{
+    font-size: 16px;
+    font-weight: 700;
+}
+.img-doc{
+    width: 60px;
+    height: 60px;
+}
+ion-card{
+    margin: 0;
+    height: 190px;
+    width: 149px;
+}
+
+ion-badge{
+    background: var(--ion-color-primary-confidenz);
+}
+.contener-list ion-card{
+    margin-bottom: 16px;
+}
+ion-icon{
+    color:var(--ion-color-primary-confidenz) ;
+}
