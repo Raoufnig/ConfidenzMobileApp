@@ -26,8 +26,11 @@ ion-card-subtitle{
     flex-direction: row;
 }
 
-ion-toolbar{
-    ion-title{
-        
-    }
-}
+ion-title {
+    position:static;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }

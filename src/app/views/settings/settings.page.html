@@ -36,22 +36,22 @@
     <ion-icon slot="end" name="{{nom}}"></ion-icon>
   </ion-item>
 </ion-card>
-
+<br><br>
 
 <ion-card>
   <ion-card-header>
     <ion-card-title>Aide</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <ion-item>
+    <ion-item id="open-modal2">
       <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
       <ion-label> Poser une Question </ion-label>
     </ion-item>
-    <ion-item>
+    <ion-item >
       <ion-icon name="chatbubble-ellipses-outline"  slot="start"></ion-icon>
       <ion-label> FAQ Confidenz </ion-label>
     </ion-item>
-    <ion-item>
+    <ion-item id="open-modal">
       <ion-icon name="shield-outline" slot="start"></ion-icon>
       <ion-label> Politique de Confidentialite </ion-label>
     </ion-item>
@@ -59,12 +59,142 @@
   </ion-card-content>
   
 </ion-card>
+<br>
+<br>
+<ion-card>
+  <ion-item id="open-modal1" >
+    <h4>Notre Equipe</h4>
+    
+    <ion-icon name="logo-steam" slot="start"></ion-icon>
+  </ion-item>
+</ion-card>
+
+<ion-modal trigger="open-modal2" [initialBreakpoint]="1" [breakpoints]="[0, 1]" mode="ios">
+  <ng-template>
+    <div class="block">Block of Content</div>
+  </ng-template>
+</ion-modal>
+
+<ion-modal #modal trigger="open-modal" [canDismiss]="canDismiss" [presentingElement]="presentingElement" mode="ios">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Confidenz</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="modal.dismiss()">Confirmer</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <p>Politique de Confidentialité</p>
+      <p>Notre application mobile respecte votre vie privée et nous nous engageons à protéger vos informations personnelles. Cette politique de confidentialité explique comment nous collectons, utilisons et partageons vos données.</p>
+      <br>
+      <br>
+      <p>Collecte de données</p>
+      <p>Nous collectons les informations suivantes lorsque vous utilisez notre application mobile :</p>
+      <ul>
+        <li>Les informations que vous fournissez lorsque vous créez un compte, telles que votre nom, votre adresse e-mail et votre mot de passe.</li>
+        <li>Les informations que vous fournissez lorsque vous utilisez notre application mobile, telles que les recherches que vous effectuez, les éléments que vous consultez et les commentaires que vous laissez.</li>
+        <li>Les informations que nous collectons automatiquement lorsque vous utilisez notre application mobile, telles que votre adresse IP, votre type d'appareil, votre système d'exploitation et votre historique de navigation.</li>
+      </ul>
+      <br>
+      <br>
+      <p>Utilisation de données</p>
+      <p>Nous utilisons les informations que nous collectons pour les finalités suivantes :</p>
+      <ul>
+        <li>Améliorer notre application mobile et optimiser votre expérience utilisateur.</li>
+        <li>Vous envoyer des notifications push pour vous informer des nouveautés et des mises à jour de notre application mobile.</li>
+        <li>Vous contacter si nécessaire, par exemple pour résoudre un problème technique ou pour répondre à une question que vous nous avez posée.</li>
+        <li>Analyser les tendances d'utilisation de notre application mobile.</li>
+
+      </ul>
+      <br>
+      <br>
+      <p>Partage de données</p>
+      <p>Nous ne vendons pas vos informations personnelles à des tiers. Nous pouvons partager vos informations avec les prestataires de services tiers qui nous aident à fournir notre application mobile, tels que les fournisseurs d'hébergement, les fournisseurs de services de messagerie et les fournisseurs de services de paiement. Nous pouvons également partager vos informations si nous sommes tenus de le faire par la loi ou si nous pensons que cela est nécessaire pour protéger nos droits ou pour répondre à une demande d'un organisme gouvernemental.</p>
+      <br>
+      <br>
+      <p>Sécurité des données</p>
+     
+     <p>Nous prenons des mesures de sécurité appropriées pour protéger vos informations personnelles contre la perte, l'utilisation abusive et l'accès non autorisé. Nous utilisons des protocoles de sécurité standard pour crypter les informations sensibles, telles que les mots de passe et les informations de paiement.</p>
+     <br>
+     <br>
+     <p>Modifications de la politique de confidentialité</p>
+     <p>Nous pouvons modifier cette politique de confidentialité à tout moment en publiant une version mise à jour sur notre site web ou dans notre application mobile. Nous vous encourageons à consulter régulièrement cette politique de confidentialité pour prendre connaissance de toute mise à jour.</p>
+     <br>
+     <br>
+     <p>Contactez-nous</p>
+     <p>Si vous avez des questions ou des préoccupations concernant notre politique de confidentialité ou notre traitement de vos informations personnelles, veuillez nous contacter à l'adresse e-mail suivante : </p>
+     <p>team@gmail.com</p>
+    
+     <ion-item>
+      <ion-label class="ion-text-wrap" for="terms">Acceptez-vous les termes et conditions?</ion-label>
+      <ion-checkbox id="terms" (ionChange)="onTermsChanged($event)" [checked]="canDismiss0"></ion-checkbox>
+    </ion-item>
+
+    </ion-content>
+
+  </ng-template>
+</ion-modal>
 
 
-
+<ion-modal #modal trigger="open-modal1" [presentingElement]="presentingElement">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Confidenz Team</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="../assets/img/claude.jpg"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>FOTSO Claude</h2>
+            <p>Back-end Developer</p>
+            <p>Mail : fotso1claude@gmail.com <a href="fotso1claude@gmail.com"></a></p>
+            <p>Linkedin : FOTSO Claude <a href="https://linkedin.com/in/claude-fotso"></a></p>
+          </ion-label>
+          
+        </ion-item>
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="../assets/img/elohim.jpg"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>TAGNE Elohim</h2>
+            <p>UX Designer | Frontend Developer</p>
+            <p>Mail : juniortagne2001@gmail.com <a href="juniortagne2001@gmail.com"></a></p>
+            <p>Linkedin : Elohim Junior TAGNE WAMBO <a href="https://www.linkedin.com/in/elohim-junior-tagne-wambo-028886198/"></a></p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="../assets/img/raouf.jpg"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>ABDOUL RAOUF Mayake</h2>
+            <p>Scrum-Master | Mobile Developer</p>
+            <p>Mail : raoufelabdoul@gmail.com <a href="raoufelabdoul@gmail.com"></a></p>
+            <p>Linkedin : Abdoul Raouf <a href="https://www.linkedin.com/in/elohim-junior-tagne-wambo-028886198/"></a></p>
+          </ion-label>
+        </ion-item>
+        
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>
 
   
 
 
 
 </ion-content>
+
+<ion-footer [translucent]="true" collapse="fade">
+  <ion-toolbar>
+    <h6>© 2023 Confidenz. All rights reserved.</h6>
+  </ion-toolbar>
+</ion-footer>
