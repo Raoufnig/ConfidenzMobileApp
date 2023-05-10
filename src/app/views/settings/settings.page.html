@@ -1,0 +1,69 @@
+
+
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <h1>Settings</h1>
+   </div>
+
+   <ion-searchbar mode="ios" animated="true" placeholder="Search" [debounce]="250" ></ion-searchbar>
+<main>
+
+  <div class="flex">
+    <div class="box-border">
+       <div class="border-white">
+          <div class="img-box">
+             <img src="/assets/img/inconnu.png"/>
+          </div>
+          
+       </div>
+    </div>
+  </div>
+ <ion-card mode="ios">
+    <ion-card-title>{{ this.utilInfo.employee.name.toUpperCase()}}
+      <h4 color="raouf"> </h4>
+      <h6>{{this.utilInfo.employee.email}}</h6>
+    </ion-card-title>
+ </ion-card>
+
+
+</main>
+<ion-card>
+  <ion-item>
+    <h4>Changer de Theme</h4>
+    <ion-toggle slot="end" (ionChange)="toggleTheme($event)" aria-label="Dark toggle" mode="ios"></ion-toggle>
+    <ion-icon slot="end" name="{{nom}}"></ion-icon>
+  </ion-item>
+</ion-card>
+
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Aide</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
+      <ion-label> Poser une Question </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="chatbubble-ellipses-outline"  slot="start"></ion-icon>
+      <ion-label> FAQ Confidenz </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="shield-outline" slot="start"></ion-icon>
+      <ion-label> Politique de Confidentialite </ion-label>
+    </ion-item>
+    
+  </ion-card-content>
+  
+</ion-card>
+
+
+
+
+  
+
+
+
+</ion-content>

@@ -11,7 +11,15 @@ const routes: Routes = [
       {
         path:'home',
         loadChildren:()=> import('../views/home/home.module').then(m => m.HomePageModule)  
-       }
+       },
+       {
+        path: 'settings',
+        loadChildren: () => import('../views/settings/settings.module').then( m => m.SettingsPageModule)
+      },
+      {
+        path: 'notification',
+        loadChildren: () => import('../views/notification/notification.module').then( m => m.NotificationPageModule)
+      },
     ]
   }
 ];

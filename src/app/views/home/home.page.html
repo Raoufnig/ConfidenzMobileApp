@@ -6,13 +6,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div style="margin-bottom: 32px;">
+  <div style="margin-bottom: 45px;">
     <ion-card class="header">
-      <ion-img src="/assets/img/personneuploading.jpg" class="rounded"></ion-img><span>Bienvenue sur <br>Confidenz<br> <button class="button-view" style="margin-top: 8px;">View Notifications</button></span>
+      <ion-img src="/assets/img/personneuploading.jpg" class="rounded"></ion-img><span>Bienvenue {{this.utilInfo.employee.name}} <br><br> <button class="button-view" style="margin-top: 8px;">View Notifications</button></span>
     </ion-card>
   </div>
   <div>
-    <h3>Liste des Documents</h3>
+    <h3>Vos Documents</h3>
     <div class="display-sm">
       <div class=" contener-list mt-25">
          <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc"> 

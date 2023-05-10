@@ -1,0 +1,33 @@
+ion-card-title, ion-card-content{
+    left: 30px;
+
+}
+ion-card-subtitle{
+    left: 45px;
+}
+
+#moncercle{
+    background:#31de9f;
+    border-radius:50%;
+    position: relative;
+    width:15px;
+    height:15px;
+    border:2px solid #679403; 
+  
+  }
+
+.pod{
+    left: 20px;
+    top :20px;
+}
+
+  main {
+    display: flex;
+    flex-direction: row;
+}
+
+ion-toolbar{
+    ion-title{
+        
+    }
+}
