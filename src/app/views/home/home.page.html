@@ -2,10 +2,11 @@
   <ion-toolbar>
     <ion-title>home</ion-title>
   </ion-toolbar>
-  <ion-searchbar mode="ios" show-clear-button="always"></ion-searchbar>
+
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
+  <ion-searchbar mode="ios" animated="true" placeholder="Search" [debounce]="250" ></ion-searchbar>
   <div style="margin-bottom: 45px;">
     <ion-card class="header">
       <ion-img src="/assets/img/personneuploading.jpg" class="rounded"></ion-img><span>Bienvenue {{this.utilInfo.employee.name}} <br><br> <button class="button-view" style="margin-top: 8px;">View Notifications</button></span>

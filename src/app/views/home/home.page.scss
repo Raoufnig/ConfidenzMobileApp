@@ -1,7 +1,16 @@
-ion-toolbar, ion-content{
-    --background:  var(--ion-color-confidenz-background);
+ion-content{
+    
 }
+ion-searchbar{
+    --box-shadow: none;
+    
+    --border-radius: 1.2rem;
+    --placeholder-font-weight:600;
+    --placeholder-opacity:0.2;
 
+    padding : 0;
+    margin-bottom: 2rem;
+}
 
 .header{
     position: relative;
