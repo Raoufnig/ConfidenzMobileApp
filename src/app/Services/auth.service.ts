@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import axios from 'axios';
+import { Url } from '../classes/url';
 
 
 axios.defaults.withCredentials=true;
@@ -23,7 +24,7 @@ export class AuthService {
 
       console.log(loginform);
       const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'accept': 'application/json' });
-      await axios.post('http://localhost:8000/api/v1/employee/login',loginform).then((response)=>{
+      await axios.post(Url.EMPLOYEE_URL+'/login',loginform).then((response)=>{
         localStorage.removeItem('userInfo');
         const employeeString= JSON.stringify(response.data.datas)
         localStorage.setItem('userInfo',employeeString);

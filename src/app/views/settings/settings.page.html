@@ -10,7 +10,7 @@
    <ion-searchbar mode="ios" animated="true" placeholder="Search" [debounce]="250" ></ion-searchbar>
 <main>
 
-  <div class="flex">
+  <div class="flex" style="align-items: center; justify-content: space-between;">
     <div class="box-border">
        <div class="border-white">
           <div class="img-box">
@@ -19,18 +19,19 @@
           
        </div>
     </div>
+    <div>
+      <ion-card mode="ios" style="padding: 15px;">
+        <ion-card-title>{{ this.utilInfo.employee.name.toUpperCase()}}
+          <h4 color="raouf"> </h4>
+          <h6>{{this.utilInfo.employee.email}}</h6>
+        </ion-card-title>
+     </ion-card>    
+    </div>
   </div>
- <ion-card mode="ios">
-    <ion-card-title>{{ this.utilInfo.employee.name.toUpperCase()}}
-      <h4 color="raouf"> </h4>
-      <h6>{{this.utilInfo.employee.email}}</h6>
-    </ion-card-title>
- </ion-card>
-
-
+ 
 </main>
-<ion-card>
-  <ion-item>
+<ion-card mode="ios">
+  <ion-item lines="none">
     <h4>Changer de Theme</h4>
     <ion-toggle slot="end" (ionChange)="toggleTheme($event)" aria-label="Dark toggle" mode="ios"></ion-toggle>
     <ion-icon slot="end" name="{{nom}}"></ion-icon>
@@ -40,7 +41,7 @@
 
 <ion-card>
   <ion-card-header>
-    <ion-card-title>Aide</ion-card-title>
+    <ion-card-title style="text-align: center;" color="confidenz-primary">Aide</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <ion-item id="open-modal2">
@@ -154,7 +155,7 @@
           <ion-label>
             <h2>FOTSO Claude</h2>
             <p>Back-end Developer</p>
-            <p>Mail : fotso1claude@gmail.com <a href="fotso1claude@gmail.com"></a></p>
+            <p>Mail : fotso1claude@gmail.com <a mailto="fotso1claude@gmail.com"></a></p>
             <p>Linkedin : FOTSO Claude <a href="https://linkedin.com/in/claude-fotso"></a></p>
           </ion-label>
           
@@ -166,7 +167,7 @@
           <ion-label>
             <h2>TAGNE Elohim</h2>
             <p>UX Designer | Frontend Developer</p>
-            <p>Mail : juniortagne2001@gmail.com <a href="juniortagne2001@gmail.com"></a></p>
+            <p>Mail : juniortagne2001@gmail.com <a mailto="juniortagne2001@gmail.com"></a></p>
             <p>Linkedin : Elohim Junior TAGNE WAMBO <a href="https://www.linkedin.com/in/elohim-junior-tagne-wambo-028886198/"></a></p>
           </ion-label>
         </ion-item>
@@ -177,7 +178,7 @@
           <ion-label>
             <h2>ABDOUL RAOUF Mayake</h2>
             <p>Scrum-Master | Mobile Developer</p>
-            <p>Mail : raoufelabdoul@gmail.com <a href="raoufelabdoul@gmail.com"></a></p>
+            <p>Mail : raoufelabdoul@gmail.com <a mailto="raoufelabdoul@gmail.com"></a></p>
             <p>Linkedin : Abdoul Raouf <a href="https://www.linkedin.com/in/elohim-junior-tagne-wambo-028886198/"></a></p>
           </ion-label>
         </ion-item>
