@@ -1,25 +1,71 @@
-ion-tab-bar {
-    bottom: 20px;
-    position: relative;
-    border-radius: 16px;
-    width: 92%;
-    margin: 0 auto;
-  }
+// ion-tab-bar {
+//     bottom: 20px;
+//     display: flex;
+//     position: relative;
+//     border-radius: 16px;
+//     width: 22.05em;
+    
+//     margin: 0 auto;
+//   }
   
-  ion-tab-button {
-    --color: var(--ion-color-medium);
-    --color-selected: var(--ion-color-primary);
+//   ion-tab-button {
+//     --color: var( --ion-color-tertiary-shade);
+//     --color-selected: var( --ion-color-tertiary-shade);
   
-    &::before {
-      background-color: transparent;
-      display: block;
-      content: "";
-      margin: 0 auto;
-      width: 20px;
-      height: 2px;
-    }
+//     &::before {
+//       background-color: transparent;
+//       display: block;
+//       content: "";
+//       margin: 0 auto;
+//       width: 20px;
+//       height: 2px;
+//     }
   
-    &.tab-selected::before {
-      background-color: var(--ion-color-primary);
-    }
-  }
+//     &.tab-selected::before {
+//       background-color: var( --ion-color-tertiary-shade);
+//     }
+//   }
+
+
+ion-tabs{
+	ion-fab {
+		margin-bottom: env(safe-area-inset-bottom); /* fix notch ios*/
+		ion-fab-button {
+			--box-shadow: none;
+		}
+	}
+	ion-tab-bar {
+		--border: 0;
+		--background: transparent;
+		position: absolute;
+		bottom: 0;
+		left:0; right: 0;
+		width: 100%;
+		&:after{
+			content: " ";
+			width: 100%;
+			bottom: 0;
+			background: var(--ion-color-tertiary-shade);
+			height: env(safe-area-inset-bottom);
+			position: absolute;
+		}
+		ion-tab-button {
+			--background: var(--ion-color-light);
+		}
+		ion-tab-button.comments {
+			margin-right: 0px;
+			border-top-right-radius: 18px;
+		}
+		ion-tab-button.notifs {
+			margin-left: 0px;
+			border-top-left-radius: 18px;
+		}
+		svg {    
+			width: 72px;
+			margin-top: 19px;
+			path{
+				fill:  var(--ion-color-light);
+			}		
+		}
+	}
+}
