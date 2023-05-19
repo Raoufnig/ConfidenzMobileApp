@@ -49,6 +49,8 @@ ion-tabs{
 			height: env(safe-area-inset-bottom);
 			position: absolute;
 		}
+  
+    }
 		ion-tab-button {
 			--background: var(--ion-color-light);
 		}
@@ -68,4 +70,3 @@ ion-tabs{
 			}		
 		}
 	}
-}
