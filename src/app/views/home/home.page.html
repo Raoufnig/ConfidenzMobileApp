@@ -2,7 +2,7 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="header0">
-    <h1>Confidenz &#128526;</h1>
+    <h1>Confidenz</h1>
     
    </div>
   <ion-searchbar mode="ios" animated="true" placeholder="Search" [debounce]="250" ></ion-searchbar>
@@ -22,10 +22,12 @@
     </ion-card>
   </div>
   <div>
-    <h3>Vos Documents</h3>
-    <div class="display-sm">
-      <div class=" contener-list mt-25">
-         <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc"> 
+    <h3 *ngIf="loaded">Vos Documents</h3>
+    <h3 *ngIf="!loaded"> <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></h3>
+    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+    <div class="display-sm" >
+      <div class=" contener-list mt-25" *ngIf="loaded">
+         <ion-card class="m-0 br-15" mode="ios" (click)="goToDetailPage(doc)" *ngFor="let doc of filteredData"> 
           <ion-item detail="true" lines="none">
             <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
               <div>
@@ -33,15 +35,17 @@
               </div>
               <div class="pl-15" style="margin-left: 18px;" mode="ios">
                 <div>
-                <h3 ><ion-text>Document Finance Aboul Raouf</ion-text></h3>
-                <ion-badge> Read Only </ion-badge>
+                <h3 ><ion-text>{{doc.name}}</ion-text></h3>
+                <ion-badge>{{doc.rights}}</ion-badge>
                 </div>
               </div>
             </div>
           </ion-item>
           
         </ion-card>
-        <ion-card class="m-0 br-15" mode="ios"> 
+        
+        <!-- <ion-card class="m-0 br-15" mode="ios"> 
+
           <ion-item detail="true" lines="none">
             <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
               <div>
@@ -88,8 +92,39 @@
             </div>
           </ion-item>
           
+        </ion-card> -->
+        
+      
+      </div>
+
+
+      <div class="contener-list mt-25" *ngIf="!loaded">
+        <ion-card class="m-0 br-15" mode="ios"  *ngFor="let doc of [1,2,3,4]"> 
+          <ion-item detail="true" lines="none">
+            <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
+              <div>
+                <ion-thumbnail class="img-doc" slot="start">
+                  <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                </ion-thumbnail>
+              </div>
+              <div class="pl-15" style="margin-left: 18px;" mode="ios">
+                <div>
+                <h3 ><ion-text>
+                  <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+                </ion-text></h3>
+                <ion-badge>
+                  <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+                </ion-badge>
+                </div>
+              </div>
+            </div>
+          </ion-item>
+          
         </ion-card>
       </div>
+
+      
+
     </div>
 
   </div>

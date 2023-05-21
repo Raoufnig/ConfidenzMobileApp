@@ -26,9 +26,9 @@ export class AuthService {
       const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'accept': 'application/json' });
       await axios.post(Url.EMPLOYEE_URL+'/login',loginform).then((response)=>{
         localStorage.removeItem('userInfo');
-        const employeeString= JSON.stringify(response.data.datas)
+        const employeeString= JSON.stringify(response.data)
         localStorage.setItem('userInfo',employeeString);
-        console.log(localStorage.getItem('userInfo'));
+        console.log("userInfo : ", localStorage.getItem('userInfo'));
         
       })
     }

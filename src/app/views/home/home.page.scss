@@ -28,6 +28,11 @@ ion-searchbar{
     padding : 0;
     margin-bottom: 2rem;
 }
+ion-skeleton-text {
+    --border-radius: 9999px;
+    --background: rgba(188, 0, 255, 0.065);
+    --background-rgb: 188, 0, 255;
+  }
 
 .header{
     position: relative;

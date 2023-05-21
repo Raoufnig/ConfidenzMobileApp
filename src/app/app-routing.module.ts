@@ -24,13 +24,18 @@ const routes: Routes = [
     loadChildren: () => import('./views/detail-doc/detail-doc.module').then( m => m.DetailDocPageModule)
   },
   {
+    path: 'tab/home/detail-doc/:id',
+    loadChildren: () => import('./views/detail-doc/detail-doc.module').then( m => m.DetailDocPageModule)
+  },
+  {
     path: 'view-doc',
     loadChildren: () => import('./views/view-doc/view-doc.module').then( m => m.ViewDocPageModule)
   },
   {
     path: 'notification',
     loadChildren: () => import('./views/notification/notification.module').then( m => m.NotificationPageModule)
-  },  {
+  },
+  {
     path: 'settings',
     loadChildren: () => import('./views/settings/settings.module').then( m => m.SettingsPageModule)
   },
