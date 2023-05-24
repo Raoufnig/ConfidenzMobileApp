@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
- 
+  showPassword: boolean = false;
   error: any;
   user: any;
   isConnected =true;

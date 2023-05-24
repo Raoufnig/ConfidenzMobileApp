@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./views/settings/settings.module').then( m => m.SettingsPageModule)
+  },  {
+    path: 'forgotpasssword',
+    loadChildren: () => import('./views/forgotpasssword/forgotpasssword.module').then( m => m.ForgotpassswordPageModule)
   },
+
 
 ];
 

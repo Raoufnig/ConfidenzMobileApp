@@ -2,7 +2,7 @@
 
 
 <ion-content [fullscreen]="true" mode="ios">
-  <div class="header">
+  <div class="header" (click)="logout()">
     <h1>Settings</h1>
     <ion-icon name="log-out-outline" size="large" slot="end"></ion-icon>
    </div>
@@ -39,6 +39,14 @@
   
 </ion-card>
 <br>
+<ion-card mode="ios">
+  <ion-item lines="none" routerLink="/forgotpasssword">
+    <h4>Changer Votre Mot de passe</h4>
+   
+  </ion-item>
+  
+</ion-card>
+
 
 <ion-card mode="ios">
   <ion-card-header>
@@ -63,7 +71,6 @@
   </ion-card-content>
   
 </ion-card>
-<br>
 <ion-card mode="ios">
   <ion-item id="open-modal1" >
     <h4>Notre Equipe</h4>

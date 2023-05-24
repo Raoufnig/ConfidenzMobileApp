@@ -1,5 +1,8 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActionSheetController, CheckboxCustomEvent } from '@ionic/angular';
+import axios from 'axios';
+import { Url } from 'src/app/classes/url';
 
 
 
@@ -18,7 +21,7 @@ export class SettingsPage implements OnInit {
   canDismiss0 = false;
   
 
-  constructor(private renderer : Renderer2, private actionSheetCtrl: ActionSheetController) { 
+  constructor(private renderer : Renderer2, private actionSheetCtrl: ActionSheetController, private router : Router) { 
     
   }
  
@@ -72,5 +75,13 @@ export class SettingsPage implements OnInit {
   onTermsChanged(event: Event) {
     const ev = event as CheckboxCustomEvent;
     this.canDismiss0 = ev.detail.checked;
+  }
+
+  logout(){
+   
+    localStorage.clear() 
+
+    this.router.navigate(['login'])
+    
   }
 }

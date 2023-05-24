@@ -1,0 +1,61 @@
+<ion-content>
+
+  <div style="text-align: center;">
+    <h1>Confidenz</h1>
+    <span>Bien vouloir remplir le formulaire pour changer votre mot de passe</span>
+  </div>
+  
+  <form class="container-form" style="margin-top: 8px;" [formGroup]="passwordForm" (ngSubmit)="submitPassword()" method="POST">
+    
+    <div class="mb-3"  style="margin-bottom: 16px;">
+      <label>Mot de passe Actuel</label>
+      
+      <ion-input class="input" placeholder="**************" required  formControlName="OldPassword">
+        <!-- [disabled]="!validationFormUser.valid" -->
+        <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
+      </ion-input>
+      <!-- <div class="mb-3" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+        <div *ngIf="loginForm.controls['password'].errors?.['required']">
+          Password is required.
+        </div>
+      </div> -->
+    </div>
+    <div class="mt-5">
+      <label> Nouveau Mot de Passe</label>
+      
+      <ion-input class="input" placeholder="**************" required  formControlName="NewPassword">
+        <!-- [disabled]="!validationFormUser.valid" -->
+        <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
+      </ion-input>
+      <!-- <div class="mb-3" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+        <div *ngIf="loginForm.controls['password'].errors?.['required']">
+          Password is required.
+        </div>
+      </div> -->
+    </div>
+
+    <div class="mt-5">
+      <label> Confirmer Mot de Passe</label>
+      
+      <ion-input class="input" placeholder="**************" required  formControlName="ConfirmPassword">
+        <!-- [disabled]="!validationFormUser.valid" -->
+        <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
+      </ion-input>
+      <!-- <div class="mb-3" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+        <div *ngIf="loginForm.controls['password'].errors?.['required']">
+          Password is required.
+        </div>
+      </div> -->
+    </div>
+   
+    <div class="button-container">
+      <button type="submit" class="button-custom " style="width: 100%;" *ngIf="!loader">Modifier</button>
+      <div class="divcentr">
+        <ion-spinner color="tertiary" mode="ios" *ngIf="loader" duration ="10"></ion-spinner>
+      </div>
+      
+    </div> 
+    
+  </form>
+
+</ion-content>
