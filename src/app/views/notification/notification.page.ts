@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Console } from 'console';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-notification',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notification.page.scss'],
 })
 export class NotificationPage implements OnInit {
+  notifications: string[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private socket: Socket) {
+    this.socket.fromEvent('notification').subscribe((data: any) => {
+      this.notifications.push(data);
+      console.log(data)
+    });
   }
 
+  ngOnInit() {
+    
+     }
+
+
 }
+
+
+
+

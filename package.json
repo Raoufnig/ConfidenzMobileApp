@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@awesome-cordova-plugins/web-socket-server": "^6.3.0",
     "@capacitor/android": "^4.8.0",
     "@capacitor/app": "^4.1.1",
     "@capacitor/core": "4.8.0",
@@ -30,7 +31,10 @@
     "@ionic/angular": "^7.0.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
+    "cordova-plugin-websocket-server": "^1.6.0",
     "ionicons": "^7.0.0",
+    "ngx-socket-io": "^4.5.1",
+    "ngx-websocket": "^0.4.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
