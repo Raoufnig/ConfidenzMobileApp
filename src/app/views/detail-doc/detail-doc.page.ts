@@ -29,10 +29,9 @@ export class DetailDocPage implements OnInit {
 
   listdoc(id:any){
     this.loaded = false
-    let BearerToken= 'Bearer '+ this.employeeInfo.authorization.token 
-      axios.get(URL.EMPLOYEE_URL + '/files/'+id,{
+      axios.get(URL.EMPLOYEE_URL + '/files/' + id,{
         headers:{
-          'Authorization': BearerToken,
+          'Authorization': 'Bearer '+ this.employeeInfo.authorization.token,
         }
       }).then((response)=>{
         
