@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./views/detail-doc/detail-doc.module').then( m => m.DetailDocPageModule)
   },
   {
-    path: 'view-doc',
+    path: 'tab/home/view-doc',
     loadChildren: () => import('./views/view-doc/view-doc.module').then( m => m.ViewDocPageModule)
   },
   {
@@ -38,7 +38,8 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./views/settings/settings.module').then( m => m.SettingsPageModule)
-  },  {
+  },
+  {
     path: 'forgotpasssword',
     loadChildren: () => import('./views/forgotpasssword/forgotpasssword.module').then( m => m.ForgotpassswordPageModule)
   },

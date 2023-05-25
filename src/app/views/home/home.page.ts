@@ -55,7 +55,7 @@ export class HomePage implements OnInit {
     this.loaded = false
     let BearerToken= 'Bearer'+ this.utilInfo.authorization.token 
     
-    axios.get(Url.EMPLOYEE_URL +'/'+this.utilInfo.employee.id+'/files',{
+    axios.get(Url.EMPLOYEE_URL +'/files',{
       headers:{
         'Authorization': BearerToken,
       }
@@ -76,7 +76,11 @@ export class HomePage implements OnInit {
 
   goToDetailPage(doc: any) {
     localStorage.removeItem('Doc');
+    localStorage.removeItem('count');
+    localStorage.removeItem('firstvisite');
+    localStorage.setItem('firstvisite','firstvisite')
     localStorage.setItem('Doc',JSON.stringify(doc));
+    localStorage.setItem('count',JSON.stringify(doc.heading_level))
     this.router.navigateByUrl(`tab/home/detail-doc/${doc.id}`);
   }
 

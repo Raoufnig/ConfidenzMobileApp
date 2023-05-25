@@ -15,7 +15,7 @@
     <div class="display-sm">
       <div class=" contener-list mt-25">
         <ion-breadcrumbs *ngIf="loaded">
-          <ion-breadcrumb>Home</ion-breadcrumb>
+          <ion-breadcrumb >Home</ion-breadcrumb>
           <ion-breadcrumb>Mois</ion-breadcrumb>
         </ion-breadcrumbs>
         <ion-breadcrumbs *ngIf="!loaded">
@@ -23,31 +23,9 @@
           <ion-breadcrumb><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></ion-breadcrumb>
         </ion-breadcrumbs>
         <ion-grid>
-          <ion-row *ngIf="loaded">
-            <!-- <ion-col >
-              <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc"> 
-                <div class="p-20 d-flex" style="padding: 20px;">
-                  <div>
-                    <ion-img src="assets/img/Doc.png" class="img-doc"></ion-img>
-                  </div>
-                  <div class="pl-15" mode="ios">
-                    <div>
-                    <h3 ><ion-text color="primary-confidenz">Fevrier</ion-text></h3>
-                    </div>
-                    <div>
-                      <span>Finance</span>
-                      <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
-                        <ion-text color="primary-confidenz">View More</ion-text>
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                      </div>
-                     
-                    </div>
-                 </div>
-                </div>
-            </ion-card> 
-            </ion-col> -->
-            <ion-col *ngFor="let doc of documents">
-              <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc" > 
+          <ion-row *ngIf="loaded===true">
+            <ion-col *ngIf="loader===false && stop===false" >
+              <ion-card   *ngFor="let doc of documents"class="m-0 br-15" mode="ios"  (click)="return(doc)" > 
                 <div class="p-20 d-flex" style="padding: 20px;">
                   <div>
                     <ion-img src="assets/img/Doc.png" class="img-doc"></ion-img>
@@ -59,7 +37,7 @@
                     <div>
                       <span>{{exceldoc.name}}</span>
                       <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
-                        <ion-text color="primary-confidenz">View More</ion-text>
+                        <ion-text color="primary-confidenz">Voir plus</ion-text>
                         <ion-icon name="arrow-forward-outline"></ion-icon>
                       </div>
                      
@@ -68,20 +46,20 @@
                 </div>
             </ion-card> 
             </ion-col>
-            <!-- <ion-col >
-              <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc"> 
+            <ion-col *ngIf="loader===false && stop=== true ">
+               <ion-card   *ngFor="let doc of documents"class="m-0 br-15" mode="ios"   (click)="viewElement(doc)" > 
                 <div class="p-20 d-flex" style="padding: 20px;">
                   <div>
                     <ion-img src="assets/img/Doc.png" class="img-doc"></ion-img>
                   </div>
                   <div class="pl-15" mode="ios">
                     <div>
-                    <h3 ><ion-text color="primary-confidenz">Fevrier</ion-text></h3>
+                    <h3 ><ion-text color="primary-confidenz">{{doc.value}}</ion-text></h3>
                     </div>
                     <div>
-                      <span>Finance</span>
+                      <span>{{exceldoc.name}}</span>
                       <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
-                        <ion-text color="primary-confidenz">View More</ion-text>
+                        <ion-text color="primary-confidenz">Voir plus</ion-text>
                         <ion-icon name="arrow-forward-outline"></ion-icon>
                       </div>
                      
@@ -90,31 +68,9 @@
                 </div>
             </ion-card> 
             </ion-col>
-            <ion-col >
-              <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc"> 
-                <div class="p-20 d-flex" style="padding: 20px;">
-                  <div>
-                    <ion-img src="assets/img/Doc.png" class="img-doc"></ion-img>
-                  </div>
-                  <div class="pl-15" mode="ios">
-                    <div>
-                    <h3 ><ion-text color="primary-confidenz">Fevrier</ion-text></h3>
-                    </div>
-                    <div>
-                      <span>Finance</span>
-                      <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
-                        <ion-text color="primary-confidenz">View More</ion-text>
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                      </div>
-                     
-                    </div>
-                 </div>
-                </div>
-            </ion-card> 
-            </ion-col> -->
             </ion-row>
 
-            <ion-row *ngIf="!loaded">
+            <ion-row *ngIf="loaded===false">
               <ion-col *ngFor="let item of [1,2,3,4]" >
                 <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc" > 
                   <div class="p-20 d-flex" style="padding: 20px;">

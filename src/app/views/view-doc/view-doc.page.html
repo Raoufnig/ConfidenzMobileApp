@@ -6,7 +6,7 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-breadcrumbs>
-    <ion-breadcrumb>Home</ion-breadcrumb>
+    <ion-breadcrumb><a href="tab/home" style="text-decoration: none; color:black" >Home</a></ion-breadcrumb>
     <ion-breadcrumb>Mois</ion-breadcrumb>
     <ion-breadcrumb>View</ion-breadcrumb>
   </ion-breadcrumbs>
@@ -14,27 +14,19 @@
     <div style="padding: 20px;">
       <div style="margin-bottom:32px ;">
         <h4>Information Personnel</h4>
-        <span>Lorem, ipsum dolor.
+        <span>
         </span>
       </div>
       <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
           <ion-text>Name</ion-text>
-          <ion-text>Abdoul</ion-text>
+          <ion-text>{{employeeInfo.employee.name}}</ion-text>
       </div>
       <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-        <ion-text>Date</ion-text>
-        <ion-text>12/15/16</ion-text>
+        <ion-text>{{elements.value}}</ion-text>
+        <ion-text>{{elements.children[0].value}}</ion-text>
     </div>
-    <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-      <ion-text>Prime</ion-text>
-      <ion-text>15000</ion-text>
-  </div>
-  <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-    <ion-text>Dette</ion-text>
-    <ion-text>15000</ion-text>
-</div>
 <div class="button-container">
-  <button type="submit" class="button-custom " id="open-modal" style="width: 100%;" >Modifier</button>
+  <button type="submit" class="button-custom " id="open-modal" style="width: 100%;" [disabled]="isButtonDisabled" >Modifier</button>
 </div> 
     </div>
   </ion-card>
@@ -43,24 +35,19 @@
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button (click)="cancel()">Cancel</ion-button>
+            <ion-button (click)="cancel()"><span style="color:white">Cancel</span></ion-button>
           </ion-buttons>
-          <ion-title>Modifier les informations</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
-          </ion-buttons>
+          <ion-title>Modifier</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
+        <form [formGroup]="celluleForm" (ngSubmit)="confirm(elements.children[0].id)">
         <ion-item>
-          <ion-label position="stacked">Changer la prime</ion-label>
-          <ion-input type="text" placeholder="Your name" ></ion-input>
+          <ion-label position="stacked">Changer {{elements.children[0].value}}</ion-label>
+          <ion-input type="text"  formControlName="value" placeholder="valeur"></ion-input>
+          <button type="submit" class="button-custom  " id="open-modal" style="width: 100%; margin-top: 10px;" >Modifier</button>
         </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Changer la Dette</ion-label>
-          <ion-input type="text" placeholder="Your name"></ion-input>
-        </ion-item>
-        
+        </form>
       </ion-content>
     </ng-template>
   </ion-modal>

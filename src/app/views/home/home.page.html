@@ -23,10 +23,8 @@
   </div>
   <div>
     <h3 *ngIf="loaded">Vos Documents</h3>
-    <h3 *ngIf="!loaded"> <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></h3>
-    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-    <div class="display-sm" >
-      <div class=" contener-list mt-25" *ngIf="loaded">
+    <div class="display-sm">
+      <div class=" contener-list mt-25"  *ngIf="loaded===true">
          <ion-card class="m-0 br-15" mode="ios" (click)="goToDetailPage(doc)" *ngFor="let doc of filteredData"> 
           <ion-item detail="true" lines="none">
             <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
@@ -41,63 +39,8 @@
               </div>
             </div>
           </ion-item>
-          
         </ion-card>
-        
-        <!-- <ion-card class="m-0 br-15" mode="ios"> 
-
-          <ion-item detail="true" lines="none">
-            <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
-              <div>
-                <ion-img src="assets/img/xls.png" class="img-doc"></ion-img>
-              </div>
-              <div class="pl-15" style="margin-left: 18px;">
-                <div>
-                <h3 ><ion-text>Aboul Raouf</ion-text></h3>
-                <ion-badge> Read Only </ion-badge>
-                </div>
-              </div>
-            </div>
-          </ion-item>
-          
-        </ion-card>
-        <ion-card class="m-0 br-15" mode="ios" (click)="toPage()"> 
-          <ion-item detail="true" lines="none">
-            <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
-              <div>
-                <ion-img src="assets/img/xls.png" class="img-doc"></ion-img>
-              </div>
-              <div class="pl-15" style="margin-left: 18px;">
-                <div>
-                <h3 ><ion-text>Aboul Raouf</ion-text></h3>
-                <ion-badge> Read Only </ion-badge>
-                </div>
-              </div>
-            </div>
-          </ion-item>
-          
-        </ion-card>
-        <ion-card class="m-0 br-15" mode="ios"> 
-          <ion-item detail="true" lines="none">
-            <div class="p-20 d-flex" style="padding: 20px; display: flex; align-items:center">
-              <div>
-                <ion-img src="assets/img/xls.png" class="img-doc"></ion-img>
-              </div>
-              <div class="pl-15" style="margin-left: 18px;">
-                <div>
-                <h3 ><ion-text>Aboul Raouf</ion-text></h3>
-                <ion-badge> Read Only </ion-badge>
-                </div>
-              </div>
-            </div>
-          </ion-item>
-          
-        </ion-card> -->
-        
-      
       </div>
-
-
       <div class="contener-list mt-25" *ngIf="!loaded">
         <ion-card class="m-0 br-15" mode="ios"  *ngFor="let doc of [1,2,3,4]"> 
           <ion-item detail="true" lines="none">
