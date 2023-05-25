@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import { Url } from 'src/app/classes/url';
+import { URL } from 'src/app/classes/url';
 @Component({
   selector: 'app-detail-doc',
   templateUrl: './detail-doc.page.html',
@@ -29,8 +29,8 @@ export class DetailDocPage implements OnInit {
 
   listdoc(id:any){
     this.loaded = false
-    let BearerToken= 'Bearer'+ this.employeeInfo.authorization.token 
-      axios.get(Url.EMPLOYEE_URL +'/'+this.employeeInfo.employee.id+'/files/'+id,{
+    let BearerToken= 'Bearer '+ this.employeeInfo.authorization.token 
+      axios.get(URL.EMPLOYEE_URL + '/files/'+id,{
         headers:{
           'Authorization': BearerToken,
         }

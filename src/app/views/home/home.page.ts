@@ -5,7 +5,7 @@ import { Toast } from '@capacitor/toast';
 import { LoadingController } from '@ionic/angular';
 import axios from 'axios';
 import { Console } from 'console';
-import { Url } from 'src/app/classes/url';
+import { URL } from 'src/app/classes/url';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -32,12 +32,12 @@ export class HomePage implements OnInit {
     let ref =this;
     Network.addListener("networkStatusChange", (val: any) =>{
      if(val.connected){
-       ref.showToast("Internet Connected");
+       ref.showToast("Connexion établie.");
        this.isConnected;
        
      }
      else{
-       ref.showToast("Internet Disconnected");
+       ref.showToast("Connexion perdue.");
        this.isConnected=false;
      }
     });
@@ -53,9 +53,9 @@ export class HomePage implements OnInit {
   }
   listDocEmployee(){
     this.loaded = false
-    let BearerToken= 'Bearer'+ this.utilInfo.authorization.token 
+    let BearerToken= 'Bearer '+ this.utilInfo.authorization.token 
     
-    axios.get(Url.EMPLOYEE_URL +'/'+this.utilInfo.employee.id+'/files',{
+    axios.get(URL.EMPLOYEE_URL + '/files',{
       headers:{
         'Authorization': BearerToken,
       }
