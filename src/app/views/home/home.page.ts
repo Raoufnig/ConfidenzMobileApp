@@ -53,11 +53,10 @@ export class HomePage implements OnInit {
   }
   listDocEmployee(){
     this.loaded = false
-    let BearerToken= 'Bearer '+ this.utilInfo.authorization.token 
     
     axios.get(URL.EMPLOYEE_URL + '/files',{
       headers:{
-        'Authorization': BearerToken,
+        'Authorization': 'Bearer '+ this.utilInfo.authorization.token ,
       }
     }).then((response)=>{
       
