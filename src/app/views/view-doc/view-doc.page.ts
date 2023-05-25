@@ -4,8 +4,9 @@ import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import {AlertController, LoadingController, ModalController} from "@ionic/angular";
 import { FormGroup ,FormControl } from '@angular/forms';
-import { Url } from 'src/app/classes/url';
+import { Url } from 'url';
 import axios from 'axios';
+import { URL } from 'src/app/classes/url';
 @Component({
   selector: 'app-view-doc',
   templateUrl: './view-doc.page.html',
@@ -56,7 +57,7 @@ export class ViewDocPage implements OnInit {
       spinner: 'circles',
     });
     await loading.present();
-    axios.post(Url.ALL_URL+'/cells/'+idcel+'/update', formdata,{
+    axios.post(URL.API_URL+'/cells/'+idcel+'/update', formdata,{
       headers: {
         'Authorization': BearerToken
       }

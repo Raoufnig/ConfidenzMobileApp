@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import { Url } from 'src/app/classes/url';
-import { NavController } from '@ionic/angular';
+import { URL } from 'src/app/classes/url';
 @Component({
   selector: 'app-detail-doc',
   templateUrl: './detail-doc.page.html',
@@ -27,12 +26,10 @@ export class DetailDocPage implements OnInit {
   loaded:boolean = false;
   employeeInfo:any;
   stop:Boolean=false;
-  constructor(private router:Router, private route: ActivatedRoute,public navCtrl: NavController) { 
+  constructor(private router:Router, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
       this.counter = params['heading'];
     });
-    console.log("document constructor",this.documents);
-    console.log("le counter",this.counter)
   }
 
   ngOnInit(): void {
@@ -80,18 +77,15 @@ export class DetailDocPage implements OnInit {
     else {
       this.count = this.exceldoc.heading_level; 
     }
-    localStorage.setItem('count', this.count.toString()); 
-    
-    console.log("counter",this.counter)
-   
+    localStorage.setItem('count', this.count.toString());  
   }
 
   listdoc(id:any){
     this.loaded = false
     let BearerToken= 'Bearer'+ this.employeeInfo.authorization.token 
-      axios.get(Url.EMPLOYEE_URL + '/files/'+id,{
+      axios.get(URL.EMPLOYEE_URL + '/files/' + id,{
         headers:{
-          'Authorization': BearerToken,
+          'Authorization': 'Bearer '+ this.employeeInfo.authorization.token,
         }
       }).then((response)=>{
         console.log("response",response);
@@ -127,24 +121,14 @@ export class DetailDocPage implements OnInit {
     localStorage.setItem('firstvisiteview','firstvisite')
     this.router.navigate(['/tab/home/view-doc'])
   }
-  // return(documents:any){
-  //   const currentUrl = this.router.url;
-  //   localStorage.removeItem('Documents');
-  //   localStorage.setItem('Documents',JSON.stringify(documents.children));
-  //   this.router.navigateByUrl('/tab/').then(() => {
-  //     this.router.navigate([currentUrl], { queryParams: { 
-  //          heading:this.count} });
-  //   });
 
-  // }
   return(documents:any) {
-    // this.navCtrl.setDirection('DetailDocPage', { mesDonnees: this.count });
-    
     const currentUrl = this.router.url;
     localStorage.removeItem('Documents');
     localStorage.setItem('Documents',JSON.stringify(documents.children));
       this.router.navigate([currentUrl], { queryParams: { 
              heading:this.count} });
+
   }
   toPage(docs:any){
    

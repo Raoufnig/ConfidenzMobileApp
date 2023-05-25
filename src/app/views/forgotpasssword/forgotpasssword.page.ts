@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import axios from 'axios';
 import { AuthService } from 'src/app/Services/auth.service';
-import { Url } from 'src/app/classes/url';
+import { URL } from 'src/app/classes/url';
 
 @Component({
   selector: 'app-forgotpasssword',
@@ -45,11 +45,10 @@ export class ForgotpassswordPage implements OnInit {
     formdata.append('password',this.passwordForm.value.NewPassword)
     formdata.append('password_confirmation',this.passwordForm.value.ConfirmPassword)
     this.loader=true;
-    let BearerToken= 'Bearer '+this.utilInfo.authorization.token;
-    axios.post(Url.EMPLOYEE_URL+'/'+this.utilInfo.employee.id+'/update-password', formdata,{
+    axios.post(URL.EMPLOYEE_URL + '/update-password', formdata,{
       withCredentials: true,
       headers: {
-        'Authorization': BearerToken,
+        'Authorization': 'Bearer '+this.utilInfo.authorization.token,
       }}).then((response)=>{
         console.log(response)
         this.loader=false

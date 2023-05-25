@@ -2,7 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionSheetController, CheckboxCustomEvent } from '@ionic/angular';
 import axios from 'axios';
-import { Url } from 'src/app/classes/url';
+import { URL } from 'src/app/classes/url';
 
 
 

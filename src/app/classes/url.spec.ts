@@ -1,7 +1,7 @@
-import { Url } from './url';
+import { URL } from './url';
 
 describe('Url', () => {
   it('should create an instance', () => {
-    expect(new Url()).toBeTruthy();
+    expect(new URL()).toBeTruthy();
   });
 });
