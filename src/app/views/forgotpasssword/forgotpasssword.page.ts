@@ -45,11 +45,10 @@ export class ForgotpassswordPage implements OnInit {
     formdata.append('password',this.passwordForm.value.NewPassword)
     formdata.append('password_confirmation',this.passwordForm.value.ConfirmPassword)
     this.loader=true;
-    let BearerToken= 'Bearer '+this.utilInfo.authorization.token;
     axios.post(URL.EMPLOYEE_URL + '/update-password', formdata,{
       withCredentials: true,
       headers: {
-        'Authorization': BearerToken,
+        'Authorization': 'Bearer '+this.utilInfo.authorization.token,
       }}).then((response)=>{
         console.log(response)
         this.loader=false
