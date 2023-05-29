@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, CheckboxCustomEvent } from '@ionic/angular';
+import { ActionSheetController, CheckboxCustomEvent, ToastController } from '@ionic/angular';
 import axios from 'axios';
 import { URL } from 'src/app/classes/url';
 
@@ -21,7 +21,7 @@ export class SettingsPage implements OnInit {
   canDismiss0 = false;
   
 
-  constructor(private renderer : Renderer2, private actionSheetCtrl: ActionSheetController, private router : Router) { 
+  constructor(private renderer : Renderer2, private actionSheetCtrl: ActionSheetController, private router : Router, private toastController: ToastController) { 
     
   }
  
@@ -83,5 +83,14 @@ export class SettingsPage implements OnInit {
 
     this.router.navigate(['login'])
     
+  }
+  async presentToast(position: 'top' | 'middle' | 'bottom') {
+    const toast = await this.toastController.create({
+      message: 'Pas Encore Disponible Pour le Moment!',
+      duration: 1700,
+      position: position,
+    });
+
+    await toast.present();
   }
 }
