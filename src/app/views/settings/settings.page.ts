@@ -1,8 +1,7 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, CheckboxCustomEvent, ToastController } from '@ionic/angular';
-import axios from 'axios';
-import { URL } from 'src/app/classes/url';
+import { ActionSheetController, CheckboxCustomEvent, IonModal, ToastController } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 
 
 
@@ -12,6 +11,7 @@ import { URL } from 'src/app/classes/url';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
+  @ViewChild(IonModal) modal!: IonModal;
   util : any;
   utilInfo : any;
   nom: any;
@@ -19,11 +19,10 @@ export class SettingsPage implements OnInit {
   presentingElement: any;
   presentingElement1: any;
   canDismiss0 = false;
+
   
 
-  constructor(private renderer : Renderer2, private actionSheetCtrl: ActionSheetController, private router : Router, private toastController: ToastController) { 
-    
-  }
+  constructor(private renderer : Renderer2, private actionSheetCtrl: ActionSheetController, private router : Router, private toastController: ToastController) {  }
  
 
   ngOnInit() {
@@ -92,5 +91,28 @@ export class SettingsPage implements OnInit {
     });
 
     await toast.present();
+  }
+
+  message = '';
+  name!: string;
+
+  cancel() {
+    this.modal.dismiss(null, 'Annuler');
+  }
+
+  confirm() {
+    this.modal.dismiss(this.name, 'Confirmer');
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'Confirmer') {
+      this.message = `${ev.detail.data}`;
+      const msg = JSON.stringify(this.message)
+
+      localStorage.setItem('QuestionsUser', msg )
+      console.log("QuestionUser : ", localStorage.getItem('QuestionUser'));
+
+    }
   }
 }

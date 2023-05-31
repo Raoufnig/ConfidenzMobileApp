@@ -12,8 +12,8 @@ import { URL } from 'src/app/classes/url';
 })
 export class ForgotpassswordPage implements OnInit {
   util : any;
-   utilInfo : any;
-   isChecked: boolean = false;
+  utilInfo : any;
+  isChecked: boolean = false;
   buttonEnabled: boolean = false;
 
   loader:Boolean=false;

@@ -15,12 +15,9 @@ export interface EmployeeItems{
 })
 export class AuthService {
   
-
   constructor() { }
 
-  
-
-    async login(loginform:any){
+  async login(loginform:any){
 
       console.log(loginform);
       const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'accept': 'application/json' });
@@ -32,12 +29,4 @@ export class AuthService {
         
       })
     }
-
-    
-
-
- 
-  
-
-
 }

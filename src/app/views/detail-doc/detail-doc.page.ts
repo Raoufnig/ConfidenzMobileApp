@@ -26,6 +26,7 @@ export class DetailDocPage implements OnInit {
   loaded:boolean = false;
   employeeInfo:any;
   stop:Boolean=false;
+  
   constructor(private router:Router, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
       this.counter = params['heading'];

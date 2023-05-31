@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormGroup , FormBuilder , Validators , FormControl} from '@angular/forms';
-import { log } from 'console';
-import axios from 'axios';
+import {FormGroup , FormBuilder , Validators} from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 @Component({
   selector: 'app-login',

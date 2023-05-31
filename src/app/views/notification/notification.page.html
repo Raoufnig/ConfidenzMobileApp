@@ -1,35 +1,33 @@
 <ion-header>
  
   <ion-toolbar>
-    <ion-buttons>
+    <!-- <ion-buttons>
       <ion-button [routerLink]="['/tab/home']">
         <ion-icon  slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-title>Notifications</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" >
   
-
-  <ion-list *ngFor="let notification of notifications">
-    <main>
-      <div id="moncercle" class="pod"></div>
-      <div>
-        <ion-card-header>
-      
-          <ion-card-title>Vous avez une nouvelle notification</ion-card-title>
-        </ion-card-header>
-    
-        <ion-card-content>
-          <p>{{ notification }}</p>
-        </ion-card-content>
-        <ion-card-subtitle>Le 15 juin 2015 à 19:15</ion-card-subtitle>
-      </div>
-   
-    </main>
-  </ion-list>
+  <ion-item *ngFor="let notification of this.notif">
+    <ion-list  (click)="readNotifications()">
+      <main>
+        <div id="moncercle" class="pod" style=" border:2px solid #679403;" [ngStyle]="{background:couleur}"></div>
+        <div >
+          <ion-card-content>
+            <p>{{notification.data.message}}</p>
+          </ion-card-content>
+          <ion-card-subtitle>{{notification.updated_at}}</ion-card-subtitle>
+          
+        </div>
+     
+      </main>
+    </ion-list>
+  </ion-item>
+ 
   
   
 </ion-content>

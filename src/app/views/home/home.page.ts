@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Network } from '@capacitor/network';
-import { Toast } from '@capacitor/toast';
 import { LoadingController } from '@ionic/angular';
 import axios from 'axios';
-import { Console } from 'console';
 import { URL } from 'src/app/classes/url';
 @Component({
   selector: 'app-home',
@@ -16,11 +13,10 @@ export class HomePage implements OnInit {
    utilInfo : any;
    fichiers: any
    storeData:any;
-   isConnected=true;
    loaded:boolean = false;
    docs:any;
-    filteredData: any[] = [];
-    searchText!: string;
+   filteredData: any[] = [];
+   searchText!: string;
   constructor(private router:Router , private loadingCtrl : LoadingController) { }
 
   ngOnInit() {
@@ -28,25 +24,9 @@ export class HomePage implements OnInit {
     this.utilInfo =JSON.parse(this.util); 
     console.log(this.utilInfo)
     this.listDocEmployee();
-
-    let ref =this;
-    Network.addListener("networkStatusChange", (val: any) =>{
-     if(val.connected){
-       ref.showToast("Connexion établie.");
-       this.isConnected;
-       
-     }
-     else{
-       ref.showToast("Connexion perdue.");
-       this.isConnected=false;
-     }
-    });
-
   }
 
-  showToast(msg :string){
-    Toast.show({text : msg , duration : "long", position:'top'})
-}
+ 
 
   toPage(){
     this.router.navigate(['/detail-doc'])

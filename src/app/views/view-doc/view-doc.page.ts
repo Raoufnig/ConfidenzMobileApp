@@ -2,9 +2,8 @@
 import { Component, ViewChild, OnInit  } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
-import {AlertController, LoadingController, ModalController} from "@ionic/angular";
+import {AlertController, LoadingController} from "@ionic/angular";
 import { FormGroup ,FormControl } from '@angular/forms';
-import { Url } from 'url';
 import axios from 'axios';
 import { URL } from 'src/app/classes/url';
 @Component({
@@ -23,6 +22,7 @@ export class ViewDocPage implements OnInit {
   celluleForm = new FormGroup({
     value: new FormControl(),
   });
+
   constructor(private loadingCtrl: LoadingController,private altcrtl: AlertController) { }
 
   ngOnInit() {
