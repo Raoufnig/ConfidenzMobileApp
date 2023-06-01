@@ -28,6 +28,7 @@ export class NotificationPage implements OnInit {
   
  
   readNotifications() {
+    
     if (this.read == null){
       axios.get(URL.EMPLOYEE_URL+'/notifications/read',{
         headers: {

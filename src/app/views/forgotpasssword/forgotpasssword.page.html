@@ -23,7 +23,7 @@
     <div class="mt-5">
       <label> Nouveau Mot de Passe</label>
       
-      <ion-input class="input" placeholder="**************" required  formControlName="NewPassword">
+      <ion-input class="input" placeholder="Au moins 8 caractéres et un chiffre" required  formControlName="NewPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
         <!-- [disabled]="!validationFormUser.valid" -->
         <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
       </ion-input>
@@ -37,7 +37,7 @@
     <div class="mt-5">
       <label> Confirmer Mot de Passe</label>
       
-      <ion-input class="input" placeholder="**************" required  formControlName="ConfirmPassword">
+      <ion-input class="input" placeholder="xxxxxxxx0" required  formControlName="ConfirmPassword">
         <!-- [disabled]="!validationFormUser.valid" -->
         <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
       </ion-input>
