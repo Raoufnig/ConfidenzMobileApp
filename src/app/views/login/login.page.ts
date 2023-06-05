@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
       await this.authservice.login(result).then(()=>{
         this.router.navigate(['tab/home'])
       });
-      // this.router.navigate(['homeadmin'])
+      
     }
 
     // handle form submission

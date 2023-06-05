@@ -14,6 +14,8 @@ export class SettingsPage implements OnInit {
   @ViewChild(IonModal) modal!: IonModal;
   util : any;
   utilInfo : any;
+  sms1:any;
+  sms:any [] = [];
   nom: any;
   isModalOpen = false;
   presentingElement: any;
@@ -109,10 +111,14 @@ export class SettingsPage implements OnInit {
     if (ev.detail.role === 'Confirmer') {
       this.message = `${ev.detail.data}`;
       const msg = JSON.stringify(this.message)
-
-      localStorage.setItem('QuestionsUser', msg )
-      console.log("QuestionUser : ", localStorage.getItem('QuestionUser'));
+      this.sms1 = JSON.parse(msg)
+      
+      console.log(this.sms)
+      
+      localStorage.setItem('QuestionsUser', this.sms1 )
+     
 
     }
   }
+  
 }

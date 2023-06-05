@@ -9,13 +9,13 @@
     </div>
   </div>
   <div style="text-align: center;">
-    <h1>Bienvenue Sur Confidenz APP</h1>
+    <h1>Bienvenue sur Confidenz</h1>
     <span>Bien vouloir remplir le formulaire pour vous connecter</span>
   </div>
   <form class="container-form" style="margin-top: 8px;" [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
     <div style="margin-bottom: 16px;">
       <label> Email</label>
-      <ion-input class="input " aria-label="Custom input"  style="margin-top: 8px; padding: 10px" formControlName="email" type="email">
+      <ion-input class="input " aria-label="Custom input"  style="margin-top: 8px; padding: 10px" placeholder="exemple@gmail.com" formControlName="email" type="email">
       </ion-input>
       <div class="mb-3"  *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
         <div *ngIf="loginForm.controls['email'].errors?.['required']">

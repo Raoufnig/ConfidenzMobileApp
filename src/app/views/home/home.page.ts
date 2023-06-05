@@ -26,8 +26,6 @@ export class HomePage implements OnInit {
     this.listDocEmployee();
   }
 
- 
-
   toPage(){
     this.router.navigate(['/detail-doc'])
   }
@@ -46,11 +44,17 @@ export class HomePage implements OnInit {
       console.log(this.docs)
       console.log(response)
       this.loaded = true;
-    
+      
     
     }).catch((error)=>{
       console.log(error)
     })
+    
+  }
+  
+  updateFilteredData() {
+    // Appliquer le filtre sur les données en utilisant comme critere le nom du Docs
+    this.filteredData = this.docs.filter((item:any) => item.name.toLowerCase().includes(this.searchText.toLowerCase()));
   }
 
   goToDetailPage(doc: any) {

@@ -48,8 +48,7 @@ export class AppComponent {
         this.notifications = response.data;
         const employeeNotif= JSON.stringify(response.data)
         localStorage.setItem('userNotif',employeeNotif);
-        console.log("userNotif : ", localStorage.getItem('userNotif'));
-        console.log(response.data)
+        
       })
       .catch((error) => {
         console.error(error);

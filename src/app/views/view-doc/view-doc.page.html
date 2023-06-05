@@ -1,6 +1,11 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>view-doc</ion-title>
+  <ion-toolbar> 
+    <ion-buttons>
+    <ion-button>
+      <ion-icon  slot="icon-only" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -45,8 +50,8 @@
         <ion-item>
           <ion-label position="stacked">Changer {{elements.children[0].value}}</ion-label>
           <ion-input type="text"  formControlName="value" placeholder="valeur"></ion-input>
-          <button type="submit" class="button-custom  " id="open-modal" style="width: 100%; margin-top: 10px;" >Modifier</button>
         </ion-item>
+        <button type="submit" class="button-custom  " id="open-modal" style="width: 100%; margin-top: 20px;" >Modifier</button>
         </form>
       </ion-content>
     </ng-template>

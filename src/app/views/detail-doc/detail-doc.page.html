@@ -26,7 +26,7 @@
           <ion-row *ngIf="loaded===true">
             <ion-col *ngIf="loader===false && stop===false" >
               <ion-card   *ngFor="let doc of documents"class="m-0 br-15" mode="ios"  (click)="return(doc)" > 
-                <div class="p-20 d-flex" style="padding: 20px;">
+                <div class="p-20 d-flex" style="padding: 13px;">
                   <div>
                     <ion-img src="assets/img/Doc.png" class="img-doc"></ion-img>
                   </div>
@@ -48,7 +48,7 @@
             </ion-col>
             <ion-col *ngIf="loader===false && stop=== true ">
                <ion-card   *ngFor="let doc of documents"class="m-0 br-15" mode="ios"   (click)="viewElement(doc)" > 
-                <div class="p-20 d-flex" style="padding: 20px;">
+                <div class="p-10 d-flex" style="padding: 13px;">
                   <div>
                     <ion-img src="assets/img/Doc.png" class="img-doc"></ion-img>
                   </div>
@@ -73,7 +73,7 @@
             <ion-row *ngIf="loaded===false">
               <ion-col *ngFor="let item of [1,2,3,4]" >
                 <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc" > 
-                  <div class="p-20 d-flex" style="padding: 20px;">
+                  <div class="p-20 d-flex" style="padding: 13px;">
                     <ion-thumbnail slot="start">
                       <ion-skeleton-text [animated]="true"></ion-skeleton-text>
                     </ion-thumbnail>

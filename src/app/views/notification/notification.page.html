@@ -10,23 +10,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
+<ion-content [fullscreen]="true">
   
-  <ion-item *ngFor="let notification of this.notif">
-    <ion-list  (click)="readNotifications()">
-      <main>
-        <div id="moncercle" class="pod" style=" border:2px solid #679403;" [ngStyle]="{background:couleur}"></div>
-        <div >
-          <ion-card-content>
-            <p>{{notification.data.message}}</p>
-          </ion-card-content>
-          <ion-card-subtitle>{{notification.updated_at}}</ion-card-subtitle>
-          
-        </div>
-     
-      </main>
-    </ion-list>
-  </ion-item>
+  
+    <ion-item  *ngFor="let notification of this.notif">
+      <ion-list  (click)="readNotifications(notification.read, notification.id)" >
+        <main>
+          <div *ngIf="this.code" id="moncercle" class="pod" style=" border:2px solid #42531f; background: #a1e31c;"></div>
+          <div *ngIf="!this.code" id="moncercle" class="pod" style=" border:2px solid #42531f; background: #999b96;"></div>
+          <div >
+            <ion-card-content>
+              <p>{{notification.data.message}}</p>
+            </ion-card-content>
+            <ion-card-subtitle>{{notification.updated_at}}</ion-card-subtitle>
+            
+          </div>
+       
+        </main>
+      </ion-list>
+    </ion-item>
+ 
  
   
   

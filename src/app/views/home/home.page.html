@@ -5,7 +5,7 @@
     <h1>Confidenz</h1>
     
    </div>
-  <ion-searchbar mode="ios" animated="true" placeholder="Search" [debounce]="250" ></ion-searchbar>
+  <ion-searchbar mode="ios" animated="true" placeholder="Search" [(ngModel)]="searchText" [debounce]="250" (click)="updateFilteredData()"></ion-searchbar>
   <div style="margin-bottom: 45px;">
     <ion-card class="header">
       <ion-img src="/assets/img/BusinessMan.jpg" class="rounded"></ion-img>
@@ -17,7 +17,7 @@
           {{this.utilInfo.employee.name}}
          </span>
        <br>
-        <button class="button-view" style="margin-top: 8px;">View Notifications</button>
+        <button class="button-view" style="margin-top: 8px;" routerLink="/tab/notification">View Notifications</button>
       </div>
     </ion-card>
   </div>
