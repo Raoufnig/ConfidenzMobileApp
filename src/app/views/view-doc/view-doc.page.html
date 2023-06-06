@@ -11,9 +11,9 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-breadcrumbs>
-    <ion-breadcrumb><a href="tab/home" style="text-decoration: none; color:black" >Home</a></ion-breadcrumb>
-    <ion-breadcrumb>Mois</ion-breadcrumb>
-    <ion-breadcrumb>View</ion-breadcrumb>
+    <ion-breadcrumb [routerLink]="['/tab/home']">Home</ion-breadcrumb>
+    <ion-breadcrumb >Document</ion-breadcrumb>
+    <ion-breadcrumb [routerLink]="['tab/home/detail-doc']">View</ion-breadcrumb>
   </ion-breadcrumbs>
   <ion-card mode="ios">
     <div style="padding: 20px;">
@@ -23,7 +23,7 @@
         </span>
       </div>
       <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-          <ion-text>Name</ion-text>
+          <ion-text>Nom</ion-text>
           <ion-text>{{employeeInfo.employee.name}}</ion-text>
       </div>
       <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">

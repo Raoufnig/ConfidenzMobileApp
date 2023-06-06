@@ -16,6 +16,7 @@
     "@capacitor/network": "^5.0.2",
     "@capacitor/toast": "^5.0.2",
     "@ionic/angular": "^7.0.10",
+    "@ionic/angular-toolkit": "^9.0.0",
     "@ionic/core": "^7.0.10",
     "axios": "^1.4.0"
   },
@@ -23,6 +24,7 @@
     "@angular-devkit/build-angular": "^16.0.4",
     "@angular/cli": "16.0.4",
     "@capacitor/cli": "^5.0.4",
+    "@types/jest": "^29.5.2",
     "typescript": "^5.0.4"
   }
 }

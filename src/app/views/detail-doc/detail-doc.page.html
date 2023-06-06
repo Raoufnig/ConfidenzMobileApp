@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<!-- <ion-header [translucent]="true">
+  
+  <ion-title>detail-doc</ion-title>
+</ion-header> -->
+
+<ion-toolbar>
     <ion-buttons>
       <ion-button [routerLink]="['/tab/home']">
         <ion-icon  slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-  </ion-toolbar>
-  <ion-title>detail-doc</ion-title>
-</ion-header>
+  <div class="header0">
+    <h2>{{exceldoc.name}}</h2>
+   </div>
+</ion-toolbar>
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <div>
@@ -15,8 +20,8 @@
     <div class="display-sm">
       <div class=" contener-list mt-25">
         <ion-breadcrumbs *ngIf="loaded">
-          <ion-breadcrumb >Home</ion-breadcrumb>
-          <ion-breadcrumb>Mois</ion-breadcrumb>
+          <ion-breadcrumb [routerLink]="['/tab/home']">Home</ion-breadcrumb>
+          <ion-breadcrumb>Document</ion-breadcrumb>
         </ion-breadcrumbs>
         <ion-breadcrumbs *ngIf="!loaded">
           <ion-breadcrumb><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></ion-breadcrumb>
@@ -36,7 +41,7 @@
                     </div>
                     <div>
                       <span>{{exceldoc.name}}</span>
-                      <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
+                      <div style="display:flex; justify-content: flex-end; margin-top: 10px;">
                         <ion-text color="primary-confidenz">Voir plus</ion-text>
                         <ion-icon name="arrow-forward-outline"></ion-icon>
                       </div>

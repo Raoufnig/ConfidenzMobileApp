@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { URL } from 'src/app/classes/url';
 import { TabPage } from 'src/app/tab/tab.page';
+import { Router } from '@angular/router';
 
 
 
@@ -18,8 +19,19 @@ export class NotificationPage implements OnInit {
   code!: boolean;
   read: string = 'null'
   notif! : any[]
+  isModalOpen = false;
 
-  constructor( private tabpage:TabPage) {}
+  setOpen(isOpen: boolean) {
+    if(isOpen===true){
+      this.isModalOpen = isOpen;
+    }else{
+      this.isModalOpen = isOpen;
+      //window.location.reload()
+    }
+   
+  }
+
+  constructor( private tabpage:TabPage, private router: Router) {}
 
   ngOnInit() {
     this.util = localStorage.getItem('userNotif');
@@ -31,7 +43,16 @@ export class NotificationPage implements OnInit {
     
     this.code = true
     console.log(this.notif)
+
+
   }
+
+  // ionViewDidEnter(){
+  //   setTimeout(()=>{
+  //     window.location.reload();
+  //   },1000000)
+    
+  // }
   
  
   readNotifications(read:any, notifId: any) {
@@ -39,29 +60,36 @@ export class NotificationPage implements OnInit {
 
     if (!!(read)== false){
      
-      axios.post(URL.EMPLOYEE_URL + '/notifications/'+ notifId + '/mark-as-read',{
+      axios.get(URL.EMPLOYEE_URL + '/notifications/'+ notifId + '/mark-as-read',{
         headers: {
           'Authorization': 'Bearer ' + this.utilInfo2.authorization.token
         }
       }).then((response) => {
           console.log(response)
+          
           console.log('message lue')
-          this.code = false
+          this.code= false
+
+          this.tabpage.updateNotificationCount();
         })
         .catch((error) => {
           console.error(error);
         });
     }else{
       console.log('Deja marqué comme lue')
-    }
-
-    //window.location.reload()
+    } 
   }
 
-  MarkasRead(notifId : any){
-
-
+  handleRefresh(event : any) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      window.location.reload();
+      this.notif = this.utilInfo.notifications;
+      event.target.complete();
+    }, 2000);
   }
+
+ 
   
   
 

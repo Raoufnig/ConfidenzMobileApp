@@ -46,7 +46,10 @@
     </div>
    
     <div class="button-container">
-      <button type="submit" class="button-custom " style="width: 100%;">Se Connecter</button>
+      <button type="submit" class="button-custom " *ngIf="!loader" style="width: 100%;">Se Connecter</button>
+      <div class="divcentr">
+        <ion-spinner color="primary-confidenz" mode="ios" *ngIf="loader" duration ="10"></ion-spinner>
+      </div>
     </div> 
     
   </form>

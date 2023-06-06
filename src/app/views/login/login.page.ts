@@ -12,6 +12,7 @@ export class LoginPage implements OnInit {
   error: any;
   user: any;
   isConnected =true;
+  loader:Boolean=false;
 
   loginForm: FormGroup;
   constructor(private formBuilder: FormBuilder,private router:Router, private authservice : AuthService ) {
@@ -31,10 +32,12 @@ export class LoginPage implements OnInit {
       return;
     }
     else{
+      this.loader=true;
       let result={ email: this.loginForm.value.email, password: this.loginForm.value.password}
       console.log("valide");
       console.log(result);
       await this.authservice.login(result).then(()=>{
+        this.loader=false;
         this.router.navigate(['tab/home'])
       });
       

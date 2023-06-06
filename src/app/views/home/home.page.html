@@ -1,12 +1,24 @@
 
 
 <ion-content [fullscreen]="true" class="ion-padding">
+  
   <div class="header0">
     <h1>Confidenz</h1>
     
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        
+      >
+      </ion-refresher-content>
+    </ion-refresher>
    </div>
-  <ion-searchbar mode="ios" animated="true" placeholder="Search" [(ngModel)]="searchText" [debounce]="250" (click)="updateFilteredData()"></ion-searchbar>
+   
+  <ion-searchbar mode="ios" animated="true" autocomplete="name" placeholder="Search"  show-clear-button="always" clear-icon="trash-bin" inputmode="text" type="text" [debounce]="250" (ionInput)="onSearchChange($event)"></ion-searchbar>
   <div style="margin-bottom: 45px;">
+    
     <ion-card class="header">
       <ion-img src="/assets/img/BusinessMan.jpg" class="rounded"></ion-img>
       <div class="inter-img">
@@ -20,6 +32,7 @@
         <button class="button-view" style="margin-top: 8px;" routerLink="/tab/notification">View Notifications</button>
       </div>
     </ion-card>
+    
   </div>
   <div>
     <h3 *ngIf="loaded">Vos Documents</h3>

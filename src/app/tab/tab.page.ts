@@ -22,7 +22,10 @@ export class TabPage implements OnInit {
 
     if(this.notif){
       this.notificationCount= this.notif.length;
+      
     }
+    this.updateNotificationCount();
+    
   }
 
   updateNotificationCount() {
@@ -35,7 +38,6 @@ export class TabPage implements OnInit {
       } else {
         this.notificationCount = 0;
       }
-    
   }
 
 }

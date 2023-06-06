@@ -21,6 +21,8 @@ ion-badge{
 }
 .contener-list ion-card{
     margin-bottom: 16px;
+    
+    
 }
 ion-icon{
     color:var(--ion-color-primary-confidenz) ;
@@ -40,3 +42,12 @@ ion-title {
     --background: rgba(188, 0, 255, 0.065);
     --background-rgb: 188, 0, 255;
   }
+  .header0{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    
+}

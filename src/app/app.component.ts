@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
 import { URL } from './classes/url';
-import { Network } from '@capacitor/network';
-import { Toast } from '@capacitor/toast';
+// import { Network } from '@capacitor/network';
+// import { Toast } from '@capacitor/toast';
 
 @Component({
   selector: 'app-root',
@@ -22,23 +22,25 @@ export class AppComponent {
     this.utilInfo =JSON.parse(this.util);
     this.getNotifications();
 
-    let ref =this;
-    Network.addListener("networkStatusChange", (val: any) =>{
-     if(val.connected){
-       ref.showToast("Connexion établie.");
-       this.isConnected;
+    // let ref =this;
+    // Network.addListener("networkStatusChange", (val: any) =>{
+    //  if(val.connected){
+    //    ref.showToast("Connexion établie.");
+    //    this.isConnected;
        
-     }
-     else{
-       ref.showToast("Connexion perdue.");
-       this.isConnected=false;
-     }
-    });
+    //  }
+    //  else{
+    //    ref.showToast("Connexion perdue.");
+    //    this.isConnected=false;
+    //  }
+    // });
+    
+    
   }
 
-  showToast(msg :string){
-    Toast.show({text : msg , duration : "long", position:'top'})
-}
+//   showToast(msg :string){
+//     Toast.show({text : msg , duration : "long", position:'top'})
+// }
 
   getNotifications() {
     axios.get(URL.EMPLOYEE_URL+'/notifications/unread',{
@@ -49,12 +51,16 @@ export class AppComponent {
         const employeeNotif= JSON.stringify(response.data)
         localStorage.setItem('userNotif',employeeNotif);
         
+        
       })
       .catch((error) => {
         console.error(error);
       });
   }
-    
-   
-  }
+
+
+
+}
+
+
 

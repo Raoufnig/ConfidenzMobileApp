@@ -11,13 +11,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+
+  <div>
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+       
+      >
+      </ion-refresher-content>
+    </ion-refresher>
+  </div>
   
     <ion-item  *ngFor="let notification of this.notif">
-      <ion-list  (click)="readNotifications(notification.read, notification.id)" >
+      <ion-list  (click)="readNotifications(notification.read, notification.id)" (click)="setOpen(true)">
         <main>
           <div *ngIf="this.code" id="moncercle" class="pod" style=" border:2px solid #42531f; background: #a1e31c;"></div>
-          <div *ngIf="!this.code" id="moncercle" class="pod" style=" border:2px solid #42531f; background: #999b96;"></div>
+          
           <div >
             <ion-card-content>
               <p>{{notification.data.message}}</p>
@@ -28,9 +39,26 @@
        
         </main>
       </ion-list>
+      <ion-modal [isOpen]="isModalOpen" mode="ios" >
+        <ng-template>
+          <ion-header>
+            <ion-toolbar color="primary-confidenz">
+              <ion-title>Nouveau message</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="setOpen(false)">Close</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <p>
+              {{notification.data.message}}
+            </p>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
     </ion-item>
  
- 
+   
   
   
 </ion-content>

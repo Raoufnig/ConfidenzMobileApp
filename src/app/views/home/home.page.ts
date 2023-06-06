@@ -51,11 +51,14 @@ export class HomePage implements OnInit {
     })
     
   }
-  
-  updateFilteredData() {
-    // Appliquer le filtre sur les données en utilisant comme critere le nom du Docs
-    this.filteredData = this.docs.filter((item:any) => item.name.toLowerCase().includes(this.searchText.toLowerCase()));
+
+  onSearchChange(ev : any){
+    const value = ev.target.value.toLowerCase()
+    
+      this.filteredData = this.filteredData.filter((d) => d.name.toLowerCase().indexOf(value) > -1);
+    
   }
+
 
   goToDetailPage(doc: any) {
     localStorage.removeItem('Doc');
@@ -66,6 +69,16 @@ export class HomePage implements OnInit {
     localStorage.setItem('count',JSON.stringify(doc.heading_level))
     this.router.navigateByUrl(`tab/home/detail-doc/${doc.id}`);
   }
+  
+  handleRefresh(event : any) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      window.location.reload();
+      event.target.complete();
+    }, 2000);
+  }
+
+
 
 }
 
