@@ -40,7 +40,7 @@ export class LoginPage implements OnInit {
     await this.authservice.login(result).then((response: any) => {
       this.loader = false;
       localStorage.clear();
-      localStorage.setItem('userInfo', JSON.parse(response.data))
+      localStorage.setItem('userInfo', JSON.parse(response))
       this.router.navigate(['tab/home'])
     });
 
