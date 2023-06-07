@@ -15,9 +15,15 @@
 <ion-content>
 
   <div style="text-align: center;">
-    <h1>Confidenz</h1>
-    <span>Bien vouloir remplir le formulaire pour changer votre mot de passe</span>
+    <div style="display: flex; justify-content: center;">
+      <div class="image">
+        <ion-img src="../../../assets/img/Reset password.png"></ion-img>
+      </div>
+    </div>
+    <h1>Changer le mot de passe</h1>
+    <span>Bien vouloir remplir le formulaire  pour changer<br> votre mot de passe</span>
   </div>
+  
   
   <form class="container-form" style="margin-top: 8px;" [formGroup]="passwordForm" (ngSubmit)="submitPassword()" method="POST">
     

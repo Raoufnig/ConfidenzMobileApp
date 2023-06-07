@@ -26,6 +26,7 @@ export class DetailDocPage implements OnInit {
   loaded:boolean = false;
   employeeInfo:any;
   stop:Boolean=false;
+  breadcumbs:any[]=[];
   
   constructor(private router:Router, private route: ActivatedRoute) { 
     this.route.queryParams.subscribe(params => {
@@ -44,42 +45,43 @@ export class DetailDocPage implements OnInit {
     console.log(this.id)
     this.firstvisited=localStorage.getItem("firstvisite");
     
-  if (this.firstvisited == "firstvisite") {
-    // Actions à effectuer lors de la première visite
-    console.log("firstvisite");
-    this.listdoc(this.exceldoc.root_id);
-    if(storedCount == "1"){
-      this.counter=this.storeData;
-    }
-    localStorage.setItem('firstvisite', 'visited')
-  }
-  else{
-    console.log("seconde fois");
-          let doc:any;
-          this.loaded=true;
-          this.loader=false;
-          doc=localStorage.getItem('Documents');
-          this.documents=JSON.parse(doc);
-    if(this.counter<=0){
-      this.counter=this.counter; 
-    }      
-   }
-    if (storedCount) {
-      this.count = parseInt(storedCount, 10);
-      this.count--;
-      if(this.count<=0){
-        this.count=1; 
+    //premiere visite du site 
+    if (this.firstvisited == "firstvisite") {
+      // Actions à effectuer lors de la première visite
+      this.listdoc(this.exceldoc.root_id);
+      const storedCount = localStorage.getItem('count');
+      if(storedCount == "1"){
+        this.counter=1;
         this.stop=true;
-        console.log("le truer")
-      }  
- 
-    } 
+      }
+      localStorage.setItem('firstvisite', 'visited')
     
-    else {
-      this.count = this.exceldoc.heading_level; 
     }
-    localStorage.setItem('count', this.count.toString());  
-  }
+ // deuxieme visite du site
+ else{
+  console.log("seconde fois");
+        let doc:any;
+        this.loader=false
+        doc=localStorage.getItem('Documents');
+        this.documents=JSON.parse(doc);
+}
+}
+  //   if (storedCount) {
+  //     this.count = parseInt(storedCount, 10);
+  //     this.count--;
+  //     if(this.count<=0){
+  //       this.count=1; 
+  //       this.stop=true;
+  //       console.log("le truer")
+  //     }  
+ 
+  //   } 
+    
+  //   else {
+  //     this.count = this.exceldoc.heading_level; 
+  //   }
+  //   localStorage.setItem('count', this.count.toString());  
+  // }
 
   listdoc(id:any){
     this.loaded = false
@@ -108,7 +110,7 @@ export class DetailDocPage implements OnInit {
        }
         console.log("le document",this.documents)
       }).catch((error)=>{
-        this.loader=true
+        this.loader=false;
         console.log(error)
       })
     
@@ -122,15 +124,56 @@ export class DetailDocPage implements OnInit {
     localStorage.setItem('firstvisiteview','firstvisite')
     this.router.navigate(['/tab/home/view-doc'])
   }
+ // parcourir l'arbre
+ return(documents:any){
+  const storedCount = localStorage.getItem('count');
+  if (storedCount) {
+    this.count = parseInt(storedCount, 10);
+    this.count--;
+    if(this.count<=1){
+      this.count=1; 
+      this.stop=true;
+      console.log("le truer")
+    }  
 
-  return(documents:any) {
-    const currentUrl = this.router.url;
-    localStorage.removeItem('Documents');
-    localStorage.setItem('Documents',JSON.stringify(documents.children));
-      this.router.navigate([currentUrl], { queryParams: { 
-             heading:this.count} });
-
+  } else {
+    this.count = this.exceldoc.heading_level; 
   }
+  localStorage.setItem('count', this.count.toString()); 
+  localStorage.removeItem('Documents');
+  localStorage.setItem('Documents',JSON.stringify(documents.children));
+  let doc:any;
+  doc=localStorage.getItem('Documents');
+  this.documents=JSON.parse(doc);
+  this.breadcumbs.push({
+    value:documents
+  })
+  console.log(this.breadcumbs)
+}
+
+// gestion Breadcumbs
+toPrevent(documents:any){
+  
+  const storedCount = localStorage.getItem('count');
+  if (storedCount) {
+    this.count = parseInt(storedCount, 10);
+    this.count=this.count+1; 
+    this.stop=false;
+  } else {
+    this.count = this.exceldoc.heading_level; 
+  }
+  localStorage.setItem('count', this.count.toString()); 
+  localStorage.removeItem('Documents');
+  localStorage.setItem('Documents',JSON.stringify(documents.children));
+  let doc:any;
+  doc=localStorage.getItem('Documents');
+  this.documents=JSON.parse(doc);
+  const i = this.breadcumbs.findIndex((it) => it.value.value == documents.value);
+  console.log(this.breadcumbs, i);
+  this.breadcumbs = this.breadcumbs.filter((it, index) => index <= i);
+  console.log(this.breadcumbs);
+  
+}
   toPage(docs:any){
    
     this.router.navigate(['view-doc'])
