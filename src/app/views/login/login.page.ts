@@ -37,10 +37,9 @@ export class LoginPage implements OnInit {
     console.log("valide");
     console.log(result);
 
-    await this.authservice.login(result).then((response: any) => {
+    await this.authservice.login(result).then(() => {
       this.loader = false;
       localStorage.clear();
-      localStorage.setItem('userInfo', JSON.parse(response))
       this.router.navigate(['tab/home'])
     });
 
