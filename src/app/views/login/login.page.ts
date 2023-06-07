@@ -39,7 +39,6 @@ export class LoginPage implements OnInit {
 
     await this.authservice.login(result).then(() => {
       this.loader = false;
-      localStorage.clear();
       this.router.navigate(['tab/home'])
     });
 
