@@ -19,7 +19,7 @@
       </ion-input>
       <div class="mb-3"  *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
         <div *ngIf="loginForm.controls['email'].errors?.['required']" style="margin-top: 8px !important;">
-            Ce champs est obligatoire.
+            Ce champ est obligatoire.
         </div>
         <div *ngIf="loginForm.controls['email'].errors?.['email']" style="margin-top: 8px !important;">
             Mauvaise adresse mail.
@@ -39,13 +39,20 @@
       
       <div class="mb-3" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
         <div *ngIf="loginForm.controls['password'].errors?.['required']" style="margin-top: 8px !important;">
-          Ce champs est obligatoire.
+          Ce champ est obligatoire.
         </div>
       </div>
     </div>
    
     <div class="button-container">
-      <ion-button type="submit" color="tertiary" expand="block" mode="ios" style="width: 100%; letter-spacing: 2px;">SE CONNECTER</ion-button>
+      <ion-button type="submit" color="tertiary" expand="block" mode="ios" style="width: 100%; letter-spacing: 2px;" *ngIf="!loader">SE CONNECTER</ion-button>
+      <div class="divcentr">
+        <ion-spinner color="primary-confidenz" mode="ios" *ngIf="loader" duration ="10"></ion-spinner>
+        <!-- <p *ngIf="loader">j4ENTRE DANS LA FONCTION SUBMIT</p>
+        <P *ngIf="showPassword">JE SUIS ENTRER DANS INVALIDE</P>
+        <P *ngIf="isConnected">JE SUIS ENTRER DANS VALIDE</P> -->
+      </div>
+    
     </div> 
     
   </form>

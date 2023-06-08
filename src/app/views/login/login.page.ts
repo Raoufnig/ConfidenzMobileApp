@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
+import { Network } from '@capacitor/network';
+import { Toast } from '@capacitor/toast';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -9,10 +12,12 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class LoginPage implements OnInit {
   showPassword: boolean = false;
-  error: any;
   user: any;
-  isConnected = true;
-  loader: Boolean = false;
+  isConnected = false;
+  loader!: Boolean;
+  log=false;
+  error=false;
+  errormessage!:string;
 
   loginForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private router: Router, private authservice: AuthService) {
@@ -25,21 +30,52 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
 
+    this.loader=false
+    let ref =this;
+    Network.addListener("networkStatusChange", (val: any) =>{
+     if(val.connected){
+       ref.showToast("Connexion établie.");
+       this.isConnected;
+       
+     }
+     else{
+       ref.showToast("Connexion perdue.");
+       this.isConnected=false;
+     }
+    });
+    
   }
+
+    showToast(msg :string){
+    Toast.show({text : msg , duration : "long", position:'top'})
+}
   async onSubmit() {
     if (this.loginForm.invalid) {
+      this.showPassword= true
       console.log("invalide");
       return;
     }
 
-    this.loader = true;
+    
     let result = { email: this.loginForm.value.email, password: this.loginForm.value.password }
     console.log("valide");
     console.log(result);
+    this.isConnected = true
+    this.loader = true;
 
     await this.authservice.login(result).then(() => {
       this.loader = false;
       this.router.navigate(['tab/home'])
+      
+    }).catch((error :any) => {
+      console.log(error)
+
+      this.log=false;
+      //this.loader=false;
+      this.error=true;
+      this.errormessage= error.message ?? error.error
+      this.router.navigate(['login'])
+     
     });
 
 

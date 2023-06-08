@@ -24,7 +24,7 @@
     <div class="mb-3"  style="margin-bottom: 16px;">
       <label>Mot de passe Actuel</label>
       
-      <ion-input class="input" placeholder="**************" required  formControlName="OldPassword">
+      <ion-input class="input" mode="ios" required style="padding: .0px 10px !important;"  formControlName="OldPassword">
         <!-- [disabled]="!validationFormUser.valid" -->
         <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
       </ion-input>
@@ -37,7 +37,7 @@
     <div class="mt-5">
       <label> Nouveau Mot de Passe</label>
       
-      <ion-input class="input" placeholder="Au moins 8 caractéres et un chiffre" required  formControlName="NewPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+      <ion-input class="input" type="password" mode="ios" placeholder="Au moins 8 caractéres et un chiffre" required style="padding: .0px 10px !important;"  formControlName="NewPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
         <!-- [disabled]="!validationFormUser.valid" -->
         <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
       </ion-input>
@@ -47,11 +47,13 @@
         </div>
       </div> -->
     </div>
+    <br>
+    <br>
 
     <div class="mt-5">
       <label> Confirmer Mot de Passe</label>
       
-      <ion-input class="input" placeholder="xxxxxxxx0" required  formControlName="ConfirmPassword">
+      <ion-input class="input"  mode="ios" type="password"  placeholder="xxxxxxxx0" required style="padding: .0px 10px !important;"  formControlName="ConfirmPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
         <!-- [disabled]="!validationFormUser.valid" -->
         <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
       </ion-input>
@@ -63,7 +65,7 @@
     </div>
    
     <div class="button-container">
-      <button type="submit" class="button-custom " style="width: 100%;" *ngIf="!loader">Modifier</button>
+      <button type="submit" class="button-custom " mode="ios" style="width: 100%;" *ngIf="!loader">Modifier</button>
       <div class="divcentr">
         <ion-spinner color="primary-confidenz" mode="ios" *ngIf="loader" duration ="10"></ion-spinner>
       </div>
