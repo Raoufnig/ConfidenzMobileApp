@@ -29,6 +29,22 @@ export class HomePage implements OnInit {
   toPage() {
     this.router.navigate(['/detail-doc'])
   }
+  ionViewWillEnter(){
+    window.addEventListener('beforeunload', this.reloadHandler)
+  
+  }
+
+  ionViewWillLeave(){
+    
+    window.removeEventListener('beforeunload', this.reloadHandler)
+  }
+
+  reloadHandler(){
+    window.location.reload();
+    window.location.reload();
+    window.location.reload();
+  }
+
   listDocEmployee() {
     this.loaded = false
 
@@ -73,6 +89,8 @@ export class HomePage implements OnInit {
   handleRefresh(event: any) {
     setTimeout(() => {
       // Any calls to load data go here
+      window.location.reload();
+      window.location.reload();
       window.location.reload();
       event.target.complete();
     }, 2000);

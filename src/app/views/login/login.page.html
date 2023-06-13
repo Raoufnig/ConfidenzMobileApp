@@ -31,14 +31,14 @@
       <main>
         <ion-input class="input" type="password" required mode="ios" formControlName="password" style="margin-top: 8px; padding: .0px 10px !important;">
           <!-- [disabled]="!validationFormUser.valid" --> 
-          <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon-->
+          <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon -->
         </ion-input>
         <!-- <ion-icon class="icon2"  (click)="showPassword = !showPassword" [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon> -->
       </main>
      
       
       <div class="mb-3" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
-        <div *ngIf="loginForm.controls['password'].errors?.['required']" style="margin-top: 8px !important;">
+        <div *ngIf="loginForm.controls['password'].errors?.['required']" style="margin-top: 8px !important; color: red;">
           Ce champ est obligatoire.
         </div>
       </div>
@@ -48,12 +48,16 @@
       <ion-button type="submit" color="tertiary" expand="block" mode="ios" style="width: 100%; letter-spacing: 2px;" *ngIf="!loader">SE CONNECTER</ion-button>
       <div class="divcentr">
         <ion-spinner color="primary-confidenz" mode="ios" *ngIf="loader" duration ="10"></ion-spinner>
-        <!-- <p *ngIf="loader">j4ENTRE DANS LA FONCTION SUBMIT</p>
-        <P *ngIf="showPassword">JE SUIS ENTRER DANS INVALIDE</P>
-        <P *ngIf="isConnected">JE SUIS ENTRER DANS VALIDE</P> -->
+       
       </div>
+      
     
     </div> 
-    
+    <br>
+    <div class="mb-3">
+      <div *ngIf="this.log==true" style="margin-top: 8px !important; color: red;">
+        Mot de passe ou Email invalide. Veuillez reessayer.
+      </div>
+    </div>
   </form>
 </ion-content>

@@ -62,6 +62,7 @@ export class LoginPage implements OnInit {
     console.log(result);
     this.isConnected = true
     this.loader = true;
+    this.log= false
 
     await this.authservice.login(result).then(() => {
       this.loader = false;
@@ -69,8 +70,8 @@ export class LoginPage implements OnInit {
       
     }).catch((error :any) => {
       console.log(error)
-
-      this.log=false;
+      this.loader = false
+      this.log=true;
       //this.loader=false;
       this.error=true;
       this.errormessage= error.message ?? error.error

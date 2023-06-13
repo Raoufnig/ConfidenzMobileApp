@@ -26,7 +26,9 @@ export class NotificationPage implements OnInit {
       this.isModalOpen = isOpen;
     }else{
       this.isModalOpen = isOpen;
-      //window.location.reload()
+      window.location.reload();
+      window.location.reload();
+      window.location.reload();
     }
    
   }
@@ -83,6 +85,8 @@ export class NotificationPage implements OnInit {
   handleRefresh(event : any) {
     setTimeout(() => {
       // Any calls to load data go here
+      window.location.reload();
+      window.location.reload();
       window.location.reload();
       this.notif = this.utilInfo.notifications;
       event.target.complete();
