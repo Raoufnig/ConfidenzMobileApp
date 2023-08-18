@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Network } from '@capacitor/network';
 import { Toast } from '@capacitor/toast';
+import { IonInput } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,23 @@ import { Toast } from '@capacitor/toast';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+   // Récupérer l'élément IonInput avec la directive ViewChild
+   @ViewChild('motDePasseInput') motDePasseInput!: IonInput;
   showPassword: boolean = false;
   user: any;
   isConnected = false;
   loader!: Boolean;
   log=false;
+  off: boolean = true;
   error=false;
   errormessage!:string;
+   // Initialiser la variable pour stocker le type de l'input
+   typeInput = 'password';
+
+   passwordType: string = 'password';
+   passwordIcon: string = 'eye-off';
+   hidePassword: boolean = true;
+   password!: string;
 
   loginForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private router: Router, private authservice: AuthService) {
@@ -46,6 +57,19 @@ export class LoginPage implements OnInit {
     
   }
 
+  togglePasswordType() {
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+    this.off=!this.off
+  }
+   // Fonction pour afficher ou masquer le mot de passe
+//  afficherMotDePasse() {
+//   // Changer le type de l'input en fonction de son état actuel
+//   this.typeInput = this.typeInput === 'password' ? 'text' : 'password';
+//   // Mettre le focus sur l'input
+//   this.motDePasseInput.setFocus();
+// } 
+
     showToast(msg :string){
     Toast.show({text : msg , duration : "long", position:'top'})
 }
@@ -71,10 +95,15 @@ export class LoginPage implements OnInit {
     }).catch((error :any) => {
       console.log(error)
       this.loader = false
-      this.log=true;
+      
       //this.loader=false;
       this.error=true;
-      this.errormessage= error.message ?? error.error
+      if(error.response.status=401){
+        this.log=true;
+        this.errormessage= error.response.data.message
+       console.log('Password error: ' + this.errormessage)
+     }
+      
       this.router.navigate(['login'])
      
     });

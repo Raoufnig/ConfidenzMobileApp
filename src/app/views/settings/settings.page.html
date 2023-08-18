@@ -1,7 +1,7 @@
 
 
 
-<ion-content [fullscreen]="true" mode="ios">
+<ion-content [fullscreen]="true" mode="ios" class="ion-padding" class="ion-margin">
   <div class="header" (click)="logout()">
     <h1>Settings</h1>
     <ion-icon name="log-out-outline" size="large" slot="end"></ion-icon>
@@ -68,7 +68,7 @@
   </ion-card-content>
   
 </ion-card>
-<ion-card mode="ios">
+<ion-card mode="ios" class="space2">
   <ion-item id="open-modal1" >
     <h4>Notre Equipe</h4>
     
@@ -204,7 +204,7 @@
             <h2>ABDOUL RAOUF Mayake</h2>
             <p>Scrum-Master | Mobile Developer</p>
             <p>Mail : <a mailto="raoufelabdoul@gmail.com">raoufelabdoul@gmail.com</a></p>
-            <p>Linkedin : <a href="https://www.linkedin.com/in/elohim-junior-tagne-wambo-028886198/">Abdoul Raouf</a></p>
+            <p>Linkedin : <a href="https://www.linkedin.com/me?trk=p_mwlite_feed_updates-secondary_nav">Abdoul Raouf</a></p>
           </ion-label>
         </ion-item>
         
@@ -213,10 +213,13 @@
   </ng-template>
 </ion-modal>
 
+
+
+
 </ion-content>
 
-<!-- <ion-footer [translucent]="true" collapse="fade">
+<!-- <ion-footer [translucent]="true" collapse="fade" class="">
   <ion-toolbar>
-    <h6>© 2023 Confidenz. All rights reserved.</h6>
+    <h6 class="title">© 2023 Confidenz. All rights reserved.</h6>
   </ion-toolbar>
 </ion-footer> -->

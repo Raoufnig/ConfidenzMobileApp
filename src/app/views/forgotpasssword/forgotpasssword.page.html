@@ -15,7 +15,7 @@
 <ion-content>
 
   <div style="text-align: center;">
-    <h1>Confidenz</h1>
+    <h1 style="font-size: 24px;color: #005eff;font-weight: bold; margin-top: 10px;">Confidenz</h1>
     <span>Bien vouloir remplir le formulaire pour changer votre mot de passe</span>
   </div>
   
@@ -23,29 +23,44 @@
     
     <div class="mb-3"  style="margin-bottom: 16px;">
       <label>Mot de passe Actuel</label>
+      <br>
+      <div>
+        <ion-input class="input" #motDePasseInput type="{{ typeInput }}"mode="ios" required style="padding: .0px 10px !important;"  formControlName="OldPassword">
+          <!-- [disabled]="!validationFormUser.valid" -->
+          
+        </ion-input>
+        
+      </div>
+      <div class="show">
+        <ion-icon slot="end"  name="{{ passwordIcon }}" (click)="afficherMotDePasse()"></ion-icon>
+      </div>
       
-      <ion-input class="input" mode="ios" required style="padding: .0px 10px !important;"  formControlName="OldPassword">
-        <!-- [disabled]="!validationFormUser.valid" -->
-        <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
-      </ion-input>
-      <!-- <div class="mb-3" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
-        <div *ngIf="loginForm.controls['password'].errors?.['required']">
-          Password is required.
+      <div class="mb-3" *ngIf="passwordForm.controls['OldPassword'].invalid && (passwordForm.controls['OldPassword'].dirty || passwordForm.controls['OldPassword'].touched)">
+        <div *ngIf="passwordForm.controls['OldPassword'].errors?.['required']" style="margin-top: 8px !important; color: red;">
+          Ce champ est obligatoire.
         </div>
-      </div> -->
+      </div>
+     
     </div>
     <div class="mt-5">
       <label> Nouveau Mot de Passe</label>
+      <br>
+      <div>
+        <ion-input class="input" #motDePasseInput type="{{ typeInput }}"  mode="ios" placeholder="Au moins 8 caractéres et un chiffre" required style="padding: .0px 10px !important;"  formControlName="NewPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+        </ion-input>
+      </div>
       
-      <ion-input class="input" type="password" mode="ios" placeholder="Au moins 8 caractéres et un chiffre" required style="padding: .0px 10px !important;"  formControlName="NewPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
-        <!-- [disabled]="!validationFormUser.valid" -->
-        <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
-      </ion-input>
-      <!-- <div class="mb-3" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
-        <div *ngIf="loginForm.controls['password'].errors?.['required']">
-          Password is required.
+      <div class="show">
+        <ion-icon slot="end"  name="{{ passwordIcon }}" (click)="afficherMotDePasse()"></ion-icon>
+      </div>
+      
+
+      <div class="mb-3" *ngIf="passwordForm.controls['NewPassword'].invalid && (passwordForm.controls['NewPassword'].dirty || passwordForm.controls['NewPassword'].touched)">
+        <div *ngIf="passwordForm.controls['NewPassword'].errors?.['required']" style="margin-top: 8px !important; color: red;">
+          Ce champ est obligatoire.
         </div>
-      </div> -->
+      </div>
+    
     </div>
     <br>
     <br>
@@ -53,7 +68,7 @@
     <div class="mt-5">
       <label> Confirmer Mot de Passe</label>
       
-      <ion-input class="input"  mode="ios" type="password"  placeholder="xxxxxxxx0" required style="padding: .0px 10px !important;"  formControlName="ConfirmPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+      <ion-input class="input"  mode="ios" #motDePasseInput type="{{ typeInput }}"  placeholder="xxxxxxxx0" required style="padding: .0px 10px !important; width: 100%;"  formControlName="ConfirmPassword" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
         <!-- [disabled]="!validationFormUser.valid" -->
         <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon> -->
       </ion-input>
@@ -71,6 +86,18 @@
       </div>
       
     </div> 
+  
+
+    <div class="mb-3">
+      <div *ngIf="this.log==true" style="margin-top: 8px !important; color: red;">
+        {{this.errorMessage}}
+      </div>
+    </div>
+    <div class="mb-3">
+      <div *ngIf="this.errorPassword==true" style="margin-top: 8px !important; color: red;">
+        
+      </div>
+    </div>
     
   </form>
 

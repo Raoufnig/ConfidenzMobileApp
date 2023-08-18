@@ -20,7 +20,7 @@
 .flex{
     display: flex;
     justify-content:center;
-    margin-top: 1px;
+    margin-top: 0.5px;
 }
 
 .flex1{
@@ -37,7 +37,8 @@
 
   ion-content {
     --padding-start:  1rem;
-    --padding-end: 0.2rem;
+    --padding-end: 0.5rem;
+    
 
    
 
@@ -67,6 +68,11 @@
 .space{
     background-color: beige;
 }
+
+.space2{
+  padding-bottom: 42px;
+}
+
 
 ion-searchbar{
     --box-shadow: none;

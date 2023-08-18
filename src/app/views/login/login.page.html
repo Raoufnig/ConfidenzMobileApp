@@ -9,13 +9,13 @@
     </div>
   </div>
   <div style="text-align: center;">
-    <h1>Bienvenue sur Confidenz</h1>
-    <span>Entrez vos informations pour vous connecter</span>
+    <h1 style="font-size: 24px;color: #005eff;font-weight: bold; margin-top: 10px;">Bienvenue sur Confidenz</h1>
+    <span>Accédez à votre compte utilisateur afin de consulter vos informations et profiter de toutes les fonctionnalités</span>
   </div>
   <form class="container-form" style="margin-top: 8px;" [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
     <div style="margin-bottom: 16px;">
-      <label> Email</label>
-      <ion-input class="input" aria-label="Custom input"  mode="ios" style="margin-top: 8px; padding: 0px 10px !important;" placeholder="exemple@example.com" formControlName="email" type="email">
+      <label  class="form-label" style="font-size: 19px;"> Email</label>
+      <ion-input class="input" aria-label="Custom input"  mode="ios" style="margin-top: 8px; padding: 0px 10px !important; width: 100%;" placeholder="exemple@example.com" formControlName="email" type="email">
       </ion-input>
       <div class="mb-3"  *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
         <div *ngIf="loginForm.controls['email'].errors?.['required']" style="margin-top: 8px !important;">
@@ -27,36 +27,38 @@
     </div>
     </div>
     <div class="mt-5">
-      <label> Mot de passe</label>
-      <main>
-        <ion-input class="input" type="password" required mode="ios" formControlName="password" style="margin-top: 8px; padding: .0px 10px !important;">
-          <!-- [disabled]="!validationFormUser.valid" --> 
-          <!-- <ion-icon name="lock-closed-outline" class="icon"></ion-icon -->
+      <label class="form-label" style="font-size: 19px;"> Mot de passe</label>
+      <div >
+        <ion-input class="input"  type="{{ passwordType }}"  [(ngModel)]="password" required mode="ios" formControlName="password" style="margin-top: 8px; padding: .0px 10px !important;">
+         
         </ion-input>
-        <!-- <ion-icon class="icon2"  (click)="showPassword = !showPassword" [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon> -->
-      </main>
-     
-      
+       
+        <!-- <span ><ion-icon slot="end"  name="eye" (click)="afficherMotDePasse()"></ion-icon>Afficher le mot de passe</span> -->
+      </div>
       <div class="mb-3" *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
         <div *ngIf="loginForm.controls['password'].errors?.['required']" style="margin-top: 8px !important; color: red;">
           Ce champ est obligatoire.
         </div>
       </div>
+     
+      
+      
     </div>
    
     <div class="button-container">
-      <ion-button type="submit" color="tertiary" expand="block" mode="ios" style="width: 100%; letter-spacing: 2px;" *ngIf="!loader">SE CONNECTER</ion-button>
+      <ion-button type="submit" color="primary-confidenz" expand="block" mode="ios" style="width: 100%;" *ngIf="!loader">SE CONNECTER</ion-button>
       <div class="divcentr">
         <ion-spinner color="primary-confidenz" mode="ios" *ngIf="loader" duration ="10"></ion-spinner>
        
       </div>
       
+     
     
     </div> 
     <br>
     <div class="mb-3">
-      <div *ngIf="this.log==true" style="margin-top: 8px !important; color: red;">
-        Mot de passe ou Email invalide. Veuillez reessayer.
+      <div *ngIf="this.log==true" class="alert alert-danger mb-4" style="margin-top: 8px !important; color: red;">
+        {{this.errormessage}} Veuillez entrer des informations valide. 
       </div>
     </div>
   </form>

@@ -1,71 +1,95 @@
-<!-- <ion-header [translucent]="true">
-  
-  <ion-title>detail-doc</ion-title>
-</ion-header> -->
-
 <ion-toolbar>
-    <ion-buttons>
-      <ion-button [routerLink]="['/tab/home']">
-        <ion-icon  slot="icon-only" name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  <div class="header0">
-    <h2>{{exceldoc.name}}</h2>
-   </div>
+  
+<div class="header0">
+  <h2>{{exceldoc.name}}</h2>
+ </div>
 </ion-toolbar>
 
+
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div>
-    <ion-breadcrumb></ion-breadcrumb>
-    <div class="display-sm">
-      <div class=" contener-list mt-25">
-        <ion-breadcrumbs *ngIf="loaded">
-          <ion-breadcrumb [routerLink]="['/tab/home']">Home</ion-breadcrumb>
-          <ion-breadcrumb>Document</ion-breadcrumb>
-        </ion-breadcrumbs>
-        <ion-breadcrumbs *ngIf="!loaded">
-          <ion-breadcrumb><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></ion-breadcrumb>
-          <ion-breadcrumb><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></ion-breadcrumb>
-        </ion-breadcrumbs>
-        <ion-grid>
-          <ion-row *ngIf="loaded===true">
-            <ion-col *ngIf="loader===false && stop===false" >
-              <ion-card   *ngFor="let doc of documents"class="m-0 br-15" mode="ios"  (click)="return(doc)" > 
-                <div class="p-20 d-flex" style="padding: 13px;">
-                  <div>
-                    <ion-img src="assets/img/Doc.png" class="img-doc"></ion-img>
-                  </div>
-                  <div class="pl-15" mode="ios">
-                    <div>
-                    <h3 ><ion-text color="primary-confidenz">{{doc.value}}</ion-text></h3>
-                    </div>
-                    <div>
-                      <span>{{exceldoc.name}}</span>
-                      <div style="display:flex; justify-content: flex-end; margin-top: 10px;">
-                        <ion-text color="primary-confidenz">Voir plus</ion-text>
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                      </div>
-                     
-                    </div>
-                 </div>
+<div>
+  <ion-breadcrumb></ion-breadcrumb>
+  <div class="display-sm">
+    <div class=" contener-list mt-25">
+      <ion-breadcrumbs *ngIf="loaded">
+        <div class="fw-bold " >
+          <span [routerLink]="['/tab/home']" routerLinkActive="true" >
+            <ion-icon name="home-outline"></ion-icon><a class="text-primary">&nbsp;Accueil > </a> 
+          </span>
+          <a  class="text-primary">Document > </a>
+          <span *ngFor="let breadcumb of breadcumbs;  let last = last"  [ngClass]="{'not-last': !last, 'last': last}">
+             <a style="cursor:pointer" (click)="toPrevent(breadcumb.value)" style="text-decoration: none;"> {{breadcumb.value.value}} ></a> 
+          </span>
+        </div>
+      </ion-breadcrumbs>
+      <ion-breadcrumbs *ngIf="!loaded">
+        <ion-breadcrumb><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></ion-breadcrumb>
+        <ion-breadcrumb><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></ion-breadcrumb>
+      </ion-breadcrumbs>
+      <ion-grid>
+        <ion-row *ngIf="loaded===true">
+          <ion-col *ngIf="loader===false && stop===false" >
+            <ion-card   *ngFor="let doc of documents"class="m-0 br-15" mode="ios"  (click)="return(doc)" > 
+              <div class="p-20 d-flex" style="padding: 20px;">
+                <div>
+                  <ion-img src="assets/img/Doc.png" class="img-doc"></ion-img>
                 </div>
-            </ion-card> 
-            </ion-col>
-            <ion-col *ngIf="loader===false && stop=== true ">
-               <ion-card   *ngFor="let doc of documents"class="m-0 br-15" mode="ios"   (click)="viewElement(doc)" > 
-                <div class="p-10 d-flex" style="padding: 13px;">
+                <div class="pl-15" mode="ios">
                   <div>
-                    <ion-img src="assets/img/Doc.png" class="img-doc"></ion-img>
+                  <h3 ><ion-text color="primary-confidenz">{{doc.value}}</ion-text></h3>
                   </div>
+                  <div>
+                    <span>{{exceldoc.name}}</span>
+                    <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
+                      <ion-text color="primary-confidenz">Voir plus</ion-text>
+                      <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </div>
+                   
+                  </div>
+               </div>
+              </div>
+          </ion-card> 
+          </ion-col>
+          <ion-col *ngIf="loader===false && stop=== true ">
+             <ion-card   *ngFor="let doc of documents"class="m-0 br-15" mode="ios"   (click)="viewElement(doc)" > 
+              <div class="p-20 d-flex" style="padding: 20px;">
+                <div>
+                  <ion-img src="assets/img/xls.png" class="img-doc"></ion-img>
+                </div>
+                <div class="pl-15" mode="ios">
+                  <div>
+                  <h3 ><ion-text color="primary-confidenz">{{doc.value}}</ion-text></h3>
+                  </div>
+                  <div>
+                    <span>{{exceldoc.name}}</span>
+                    <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
+                      <ion-text color="primary-confidenz">Voir plus</ion-text>
+                      <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </div>
+                   
+                  </div>
+               </div>
+              </div>
+          </ion-card> 
+          </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="loaded===false">
+            <ion-col *ngFor="let item of [1,2,3,4]" >
+              <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc" > 
+                <div class="p-20 d-flex" style="padding: 20px;">
+                  <ion-thumbnail slot="start">
+                    <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                  </ion-thumbnail>
                   <div class="pl-15" mode="ios">
                     <div>
-                    <h3 ><ion-text color="primary-confidenz">{{doc.value}}</ion-text></h3>
+                    <h3 ><ion-text color="primary-confidenz"><ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text></ion-text></h3>
                     </div>
                     <div>
-                      <span>{{exceldoc.name}}</span>
+                      <span><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></span>
                       <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
-                        <ion-text color="primary-confidenz">Voir plus</ion-text>
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                        <ion-text color="primary-confidenz"><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></ion-text>
+                        <ion-icon name="arrow-forward-outline"><ion-skeleton-text [animated]="true"></ion-skeleton-text></ion-icon>
                       </div>
                      
                     </div>
@@ -73,36 +97,10 @@
                 </div>
             </ion-card> 
             </ion-col>
-            </ion-row>
-
-            <ion-row *ngIf="loaded===false">
-              <ion-col *ngFor="let item of [1,2,3,4]" >
-                <ion-card class="m-0 br-15" mode="ios" routerLink="detail-doc" > 
-                  <div class="p-20 d-flex" style="padding: 13px;">
-                    <ion-thumbnail slot="start">
-                      <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-                    </ion-thumbnail>
-                    <div class="pl-15" mode="ios">
-                      <div>
-                      <h3 ><ion-text color="primary-confidenz"><ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text></ion-text></h3>
-                      </div>
-                      <div>
-                        <span><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></span>
-                        <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
-                          <ion-text color="primary-confidenz"><ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text></ion-text>
-                          <ion-icon name="arrow-forward-outline"><ion-skeleton-text [animated]="true"></ion-skeleton-text></ion-icon>
-                        </div>
-                       
-                      </div>
-                   </div>
-                  </div>
-              </ion-card> 
-              </ion-col>
-            </ion-row> 
-          </ion-grid>  
-      </div>
+          </ion-row> 
+        </ion-grid>  
     </div>
-
   </div>
-</ion-content>
 
+</div>
+</ion-content>
